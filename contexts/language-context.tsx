@@ -1,14 +1,15 @@
-"use client"
+// contexts/language-context.tsx
+"use client";
 
-import type React from "react"
-import { createContext, useContext, useState, useEffect } from "react"
+import type React from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
-type Language = "pt" | "en"
+type Language = "pt" | "en";
 
 interface LanguageContextType {
-  language: Language
-  setLanguage: (lang: Language) => void
-  t: (key: string) => string
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: string) => string;
 }
 
 const translations = {
@@ -24,7 +25,8 @@ const translations = {
     "about.description":
       "O escritório Oliveira & Santana é referência em Direito Tributário e Empresarial, atuando lado a lado com empresas que buscam crescimento sustentável e segurança jurídica.",
     "about.mission": "Missão",
-    "about.mission.text": "Oferecer soluções jurídicas estratégicas e personalizadas",
+    "about.mission.text":
+      "Oferecer soluções jurídicas estratégicas e personalizadas",
     "about.vision": "Visão",
     "about.vision.text": "Ser referência nacional em consultoria empresarial",
     "about.values": "Valores",
@@ -34,46 +36,59 @@ const translations = {
     "about.chooseOffice": "Escolha um escritório para consulta:",
     "about.history":
       "O escritório Oliveira & Santana nasceu da união de profissionais com vasta experiência em Direito Tributário e Empresarial, comprometidos em oferecer soluções jurídicas estratégicas e personalizadas.",
-    "about.differentiator": "Atuamos lado a lado com empresas que buscam crescimento sustentável e segurança jurídica.",
+    "about.differentiator":
+      "Atuamos lado a lado com empresas que buscam crescimento sustentável e segurança jurídica.",
 
     // Practice Areas
     "areas.title": "Áreas de Atuação",
-    "areas.subtitle": "Soluções jurídicas especializadas para impulsionar o crescimento do seu negócio",
+    "areas.subtitle":
+      "Soluções jurídicas especializadas para impulsionar o crescimento do seu negócio",
     "areas.tax": "Direito Tributário",
     "areas.tax.1": "Planejamento tributário estratégico",
     "areas.tax.2": "Recuperação de créditos tributários",
     "areas.tax.3": "Defesa em autos de infração",
     "areas.tax.4": "Consultoria preventiva",
-    "areas.tax.benefit": "Reduza custos e riscos com uma estrutura tributária eficiente",
+    "areas.tax.benefit":
+      "Reduza custos e riscos com uma estrutura tributária eficiente",
     "areas.corporate": "Direito Empresarial",
     "areas.corporate.1": "Constituição e estruturação de empresas",
     "areas.corporate.2": "Contratos e governança corporativa",
     "areas.corporate.3": "Fusões e aquisições (M&A)",
     "areas.corporate.4": "Contencioso empresarial",
-    "areas.corporate.benefit": "Proteja seu negócio com estruturas jurídicas sólidas e estratégicas",
+    "areas.corporate.benefit":
+      "Proteja seu negócio com estruturas jurídicas sólidas e estratégicas",
 
     // Why Choose Us
     "why.title": "Por que escolher nosso escritório",
-    "why.subtitle": "Diferenciais que fazem a diferença no sucesso do seu negócio",
+    "why.subtitle":
+      "Diferenciais que fazem a diferença no sucesso do seu negócio",
     "why.1.title": "Atendimento consultivo e próximo",
-    "why.1.desc": "Relacionamento direto com os sócios e equipe especializada dedicada ao seu caso",
+    "why.1.desc":
+      "Relacionamento direto com os sócios e equipe especializada dedicada ao seu caso",
     "why.2.title": "Experiência multissetorial",
-    "why.2.desc": "Atuação em diversos segmentos da economia, do varejo à indústria de tecnologia",
+    "why.2.desc":
+      "Atuação em diversos segmentos da economia, do varejo à indústria de tecnologia",
     "why.3.title": "Tecnologia e agilidade",
-    "why.3.desc": "Processos otimizados e ferramentas modernas para transparência e rapidez",
+    "why.3.desc":
+      "Processos otimizados e ferramentas modernas para transparência e rapidez",
     "why.4.title": "Foco em resultados",
-    "why.4.desc": "Compromisso com soluções efetivas, não apenas processos burocráticos",
+    "why.4.desc":
+      "Compromisso com soluções efetivas, não apenas processos burocráticos",
 
     // Success Cases
     "cases.title": "Resultados Reais",
-    "cases.subtitle": "Casos de sucesso que demonstram nosso compromisso com a excelência",
+    "cases.subtitle":
+      "Casos de sucesso que demonstram nosso compromisso com a excelência",
     "cases.testimonials": "Depoimentos",
     "cases.1.category": "Planejamento Tributário",
-    "cases.1.result": "Empresa do setor industrial reduziu 30% da carga tributária após revisão estratégica",
+    "cases.1.result":
+      "Empresa do setor industrial reduziu 30% da carga tributária após revisão estratégica",
     "cases.2.category": "Recuperação de Créditos",
-    "cases.2.result": "Recuperação de R$ 2,5 milhões em créditos tributários para grupo varejista",
+    "cases.2.result":
+      "Recuperação de R$ 2,5 milhões em créditos tributários para grupo varejista",
     "cases.3.category": "M&A e Governança",
-    "cases.3.result": "Estruturação societária complexa para fusão de três empresas de tecnologia",
+    "cases.3.result":
+      "Estruturação societária complexa para fusão de três empresas de tecnologia",
     "cases.testimonial.1.text":
       "A equipe do Oliveira & Santana transformou nossa estrutura tributária. O resultado foi além das expectativas, com economia real e segurança jurídica.",
     "cases.testimonial.1.author": "CEO, Indústria Metalúrgica",
@@ -85,13 +100,15 @@ const translations = {
 
     // Contact
     "contact.title": "Entre em Contato",
-    "contact.subtitle": "Agende uma consulta e descubra como podemos ajudar seu negócio",
+    "contact.subtitle":
+      "Agende uma consulta e descubra como podemos ajudar seu negócio",
     "contact.name": "Nome completo",
     "contact.email": "E-mail",
     "contact.company": "Empresa",
     "contact.message": "Mensagem",
     "contact.send": "Enviar Mensagem",
-    "contact.success": "Mensagem enviada com sucesso! Entraremos em contato em breve.",
+    "contact.success":
+      "Mensagem enviada com sucesso! Entraremos em contato em breve.",
 
     // Team
     "team.raphael.bio":
@@ -113,11 +130,105 @@ const translations = {
     "footer.privacy": "Política de Privacidade",
     "footer.terms": "Termos de Uso",
     "footer.rights": "Todos os direitos reservados",
+
+    // Quiz - NOVAS TRADUÇÕES
+    "quiz.title": "Diagnóstico Rápido: Risco Fiscal",
+    "quiz.q1.text": "Qual o regime tributário atual da sua empresa?",
+    "quiz.q1.opt.a": "Simples Nacional",
+    "quiz.q1.opt.b": "Lucro Presumido",
+    "quiz.q1.opt.c": "Lucro Real",
+    "quiz.q1.opt.d": "Não tenho certeza / MEI / Outro",
+    "quiz.q2.text":
+      "Com que frequência sua empresa revisa o planejamento tributário com um especialista?",
+    "quiz.q2.opt.a": "Anualmente",
+    "quiz.q2.opt.b": "A cada 2-3 anos",
+    "quiz.q2.opt.c": "Raramente ou nunca",
+    "quiz.q2.opt.d": "Não sei",
+    "quiz.q3.text":
+      "Sua empresa vende produtos com Substituição Tributária (ICMS-ST) ou PIS/COFINS Monofásico?",
+    "quiz.q3.opt.a": "Sim, e temos controle sobre os créditos/ressarcimentos.",
+    "quiz.q3.opt.b":
+      "Sim, mas não tenho certeza sobre os créditos/ressarcimentos.",
+    "quiz.q3.opt.c": "Não vendemos esses produtos.",
+    "quiz.q3.opt.d": "Não sei.",
+    "quiz.q4.text":
+      "Nos últimos 5 anos, sua empresa já fez um levantamento para recuperar impostos pagos a maior (créditos tributários)?",
+    "quiz.q4.opt.a": "Sim, e recuperamos valores.",
+    "quiz.q4.opt.b": "Sim, mas não encontramos nada ou foi complexo.",
+    "quiz.q4.opt.c": "Não, nunca fizemos.",
+    "quiz.q4.opt.d": "Não sei se pagamos a maior.",
+    "quiz.q5.text":
+      "Você acredita que a carga tributária da sua empresa é alta comparada aos concorrentes ou ao mercado?",
+    "quiz.q5.opt.a": "Não, parece adequada.",
+    "quiz.q5.opt.b": "Sim, sinto que pagamos muito.",
+    "quiz.q5.opt.c": "Tenho dúvidas, não consigo comparar.",
+    "quiz.previous": "Anterior",
+    "quiz.next": "Próxima",
+    "quiz.finish": "Ver Resultado",
+    "quiz.result.title": "Resultado do Diagnóstico",
+    "quiz.result.low.title": "Risco Baixo",
+    "quiz.result.low.desc":
+      "Parabéns! Parece que sua gestão fiscal está bem encaminhada, mas uma revisão periódica pode sempre identificar novas oportunidades.",
+    "quiz.result.medium.title": "Risco Médio",
+    "quiz.result.medium.desc":
+      "Atenção! Existem alguns pontos que indicam possíveis oportunidades de economia ou riscos fiscais na sua empresa. Uma análise detalhada pode ser muito benéfica.",
+    "quiz.result.high.title": "Risco Alto",
+    "quiz.result.high.desc":
+      "Alerta! Há grandes chances de sua empresa estar pagando mais impostos que o necessário ou exposta a riscos. Recomendamos fortemente uma análise tributária aprofundada.",
+    "quiz.cta": "Agende uma Análise Tributária Gratuita",
+    "quiz.restart": "Refazer Diagnóstico",
+
+    // Simulator - NOVAS TRADUÇÕES
+    "simulator.title": "Simulador (Ilustrativo) de Economia Tributária",
+    "simulator.description":
+      "Tenha uma ideia do potencial de economia para sua empresa.",
+    "simulator.disclaimer":
+      "Este simulador oferece apenas uma estimativa ilustrativa. A economia real depende de uma análise detalhada. Consulte nossos especialistas.",
+    "simulator.label.revenue": "Faturamento Anual (R$)",
+    "simulator.label.regime": "Regime Tributário Atual",
+    "simulator.placeholder.regime": "Selecione...",
+    "simulator.regime.simples": "Simples Nacional",
+    "simulator.regime.presumido": "Lucro Presumido",
+    "simulator.regime.real": "Lucro Real",
+    "simulator.label.sector": "Setor Principal (Opcional)",
+    "simulator.placeholder.sector": "Selecione...",
+    "simulator.sector.servicos": "Serviços",
+    "simulator.sector.comercio": "Comércio",
+    "simulator.sector.industria": "Indústria",
+    "simulator.sector.outro": "Outro",
+    "simulator.button.simulate": "Simular Potencial",
+    "simulator.error.invalidInput":
+      "Por favor, preencha o faturamento anual e selecione o regime tributário.",
+    "simulator.result.text":
+      "Com base nas suas informações, sua empresa *poderia* ter um potencial de economia tributária de",
+    "simulator.result.upTo": "até",
+    "simulator.result.perYear": "por ano com uma reestruturação.",
+    "simulator.result.noSaving":
+      "Com base nas informações, otimizações podem existir, mas uma análise detalhada é necessária para identificar potenciais economias.",
+    "simulator.cta": "Agende uma Análise Gratuita",
+
+    "tools.quiz.cta.title": "Diagnóstico Fiscal Rápido",
+    "tools.quiz.cta.desc":
+      "Sua empresa paga impostos corretamente? Descubra seu nível de risco em minutos.",
+    "tools.quiz.cta.button": "Iniciar Diagnóstico",
+    "tools.simulator.cta.title": "Simulador de Economia",
+    "tools.simulator.cta.desc":
+      "Veja uma estimativa *ilustrativa* do quanto sua empresa poderia economizar em impostos.",
+    "tools.simulator.cta.button": "Simular Agora",
+    "tools.backButton": "Voltar para Ferramentas",
+
+    "hero.counter.clients": "Clientes Satisfeitos",
+    "hero.counter.cases": "Processos Concluídos",
+    "whatsapp.modal.title": "Escolha o escritório",
+    "whatsapp.modal.desc": "Selecione o local para direcionarmos seu contato:",
+    "whatsapp.modal.poa": "Porto Alegre - RS",
+    "whatsapp.modal.gar": "Garanhuns - PE",
   },
   en: {
     // Hero
     "hero.tagline": "Legal strategy for your business growth",
-    "hero.subtitle": "Excellence in Tax and Corporate Law with personalized service and proven results",
+    "hero.subtitle":
+      "Excellence in Tax and Corporate Law with personalized service and proven results",
     "hero.cta": "Explore our practice areas",
 
     // About
@@ -135,46 +246,59 @@ const translations = {
     "about.chooseOffice": "Choose an office for consultation:",
     "about.history":
       "Oliveira & Santana was born from the union of professionals with extensive experience in Tax and Corporate Law, committed to offering strategic and personalized legal solutions.",
-    "about.differentiator": "We work side by side with companies seeking sustainable growth and legal security.",
+    "about.differentiator":
+      "We work side by side with companies seeking sustainable growth and legal security.",
 
     // Practice Areas
     "areas.title": "Practice Areas",
-    "areas.subtitle": "Specialized legal solutions to boost your business growth",
+    "areas.subtitle":
+      "Specialized legal solutions to boost your business growth",
     "areas.tax": "Tax Law",
     "areas.tax.1": "Strategic tax planning",
     "areas.tax.2": "Tax credit recovery",
     "areas.tax.3": "Defense in tax assessments",
     "areas.tax.4": "Preventive consulting",
-    "areas.tax.benefit": "Reduce costs and risks with an efficient tax structure",
+    "areas.tax.benefit":
+      "Reduce costs and risks with an efficient tax structure",
     "areas.corporate": "Corporate Law",
     "areas.corporate.1": "Company formation and structuring",
     "areas.corporate.2": "Contracts and corporate governance",
     "areas.corporate.3": "Mergers and acquisitions (M&A)",
     "areas.corporate.4": "Corporate litigation",
-    "areas.corporate.benefit": "Protect your business with solid and strategic legal structures",
+    "areas.corporate.benefit":
+      "Protect your business with solid and strategic legal structures",
 
     // Why Choose Us
     "why.title": "Why choose our firm",
-    "why.subtitle": "Differentials that make a difference in your business success",
+    "why.subtitle":
+      "Differentials that make a difference in your business success",
     "why.1.title": "Consultative and close service",
-    "why.1.desc": "Direct relationship with partners and specialized team dedicated to your case",
+    "why.1.desc":
+      "Direct relationship with partners and specialized team dedicated to your case",
     "why.2.title": "Multi-sector experience",
-    "why.2.desc": "Work in various economic segments, from retail to technology industry",
+    "why.2.desc":
+      "Work in various economic segments, from retail to technology industry",
     "why.3.title": "Technology and agility",
-    "why.3.desc": "Optimized processes and modern tools for transparency and speed",
+    "why.3.desc":
+      "Optimized processes and modern tools for transparency and speed",
     "why.4.title": "Results focused",
-    "why.4.desc": "Commitment to effective solutions, not just bureaucratic processes",
+    "why.4.desc":
+      "Commitment to effective solutions, not just bureaucratic processes",
 
     // Success Cases
     "cases.title": "Real Results",
-    "cases.subtitle": "Success cases that demonstrate our commitment to excellence",
+    "cases.subtitle":
+      "Success cases that demonstrate our commitment to excellence",
     "cases.testimonials": "Testimonials",
     "cases.1.category": "Tax Planning",
-    "cases.1.result": "Industrial company reduced tax burden by 30% after strategic review",
+    "cases.1.result":
+      "Industrial company reduced tax burden by 30% after strategic review",
     "cases.2.category": "Credit Recovery",
-    "cases.2.result": "Recovery of R$ 2.5 million in tax credits for retail group",
+    "cases.2.result":
+      "Recovery of R$ 2.5 million in tax credits for retail group",
     "cases.3.category": "M&A and Governance",
-    "cases.3.result": "Complex corporate structuring for merger of three technology companies",
+    "cases.3.result":
+      "Complex corporate structuring for merger of three technology companies",
     "cases.testimonial.1.text":
       "The Oliveira & Santana team transformed our tax structure. The result exceeded expectations, with real savings and legal security.",
     "cases.testimonial.1.author": "CEO, Metallurgical Industry",
@@ -186,7 +310,8 @@ const translations = {
 
     // Contact
     "contact.title": "Get in Touch",
-    "contact.subtitle": "Schedule a consultation and discover how we can help your business",
+    "contact.subtitle":
+      "Schedule a consultation and discover how we can help your business",
     "contact.name": "Full name",
     "contact.email": "Email",
     "contact.company": "Company",
@@ -199,10 +324,12 @@ const translations = {
       "Specialist in strategic tax planning with over 15 years of experience. Master's in Tax Law from UFRGS.",
     "team.joan.bio":
       "Expert in mergers and acquisitions and corporate governance. Postgraduate in Corporate Law from FGV.",
-    "team.caline.bio": "Specialist in tax litigation and corporate structuring. PhD candidate in Law at PUC-RS.",
+    "team.caline.bio":
+      "Specialist in tax litigation and corporate structuring. PhD candidate in Law at PUC-RS.",
 
     // Footer
-    "footer.description": "Excellence in Tax and Corporate Law. Legal strategy for your business growth.",
+    "footer.description":
+      "Excellence in Tax and Corporate Law. Legal strategy for your business growth.",
     "footer.links": "Quick Links",
     "footer.home": "Home",
     "footer.about": "About",
@@ -212,37 +339,154 @@ const translations = {
     "footer.privacy": "Privacy Policy",
     "footer.terms": "Terms of Use",
     "footer.rights": "All rights reserved",
-  },
-}
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
+    // Quiz - NEW TRANSLATIONS
+    "quiz.title": "Quick Diagnosis: Tax Risk",
+    "quiz.q1.text": "What is your company's current tax regime?",
+    "quiz.q1.opt.a": "Simples Nacional",
+    "quiz.q1.opt.b": "Presumed Profit",
+    "quiz.q1.opt.c": "Actual Profit",
+    "quiz.q1.opt.d": "Not sure / MEI / Other",
+    "quiz.q2.text":
+      "How often does your company review tax planning with a specialist?",
+    "quiz.q2.opt.a": "Annually",
+    "quiz.q2.opt.b": "Every 2-3 years",
+    "quiz.q2.opt.c": "Rarely or never",
+    "quiz.q2.opt.d": "I don't know",
+    "quiz.q3.text":
+      "Does your company sell products with Tax Substitution (ICMS-ST) or Single-Phase PIS/COFINS?",
+    "quiz.q3.opt.a": "Yes, and we have control over credits/refunds.",
+    "quiz.q3.opt.b": "Yes, but I'm not sure about credits/refunds.",
+    "quiz.q3.opt.c": "We don't sell these products.",
+    "quiz.q3.opt.d": "I don't know.",
+    "quiz.q4.text":
+      "In the last 5 years, has your company conducted a review to recover overpaid taxes (tax credits)?",
+    "quiz.q4.opt.a": "Yes, and we recovered amounts.",
+    "quiz.q4.opt.b": "Yes, but we found nothing or the process was complex.",
+    "quiz.q4.opt.c": "No, we never have.",
+    "quiz.q4.opt.d": "I don't know if we overpaid.",
+    "quiz.q5.text":
+      "Do you believe your company's tax burden is high compared to competitors or the market?",
+    "quiz.q5.opt.a": "No, it seems appropriate.",
+    "quiz.q5.opt.b": "Yes, I feel we pay too much.",
+    "quiz.q5.opt.c": "I have doubts, I can't compare.",
+    "quiz.previous": "Previous",
+    "quiz.next": "Next",
+    "quiz.finish": "See Result",
+    "quiz.result.title": "Diagnosis Result",
+    "quiz.result.low.title": "Low Risk",
+    "quiz.result.low.desc":
+      "Congratulations! It seems your tax management is on the right track, but a periodic review can always identify new opportunities.",
+    "quiz.result.medium.title": "Medium Risk",
+    "quiz.result.medium.desc":
+      "Attention! There are points indicating possible savings opportunities or tax risks in your company. A detailed analysis could be very beneficial.",
+    "quiz.result.high.title": "High Risk",
+    "quiz.result.high.desc":
+      "Alert! There's a high chance your company is paying more taxes than necessary or is exposed to risks. We strongly recommend an in-depth tax analysis.",
+    "quiz.cta": "Schedule a Free Tax Analysis",
+    "quiz.restart": "Retake Diagnosis",
+
+    // Simulator - NEW TRANSLATIONS
+    "simulator.title": "Tax Savings Simulator (Illustrative)",
+    "simulator.description":
+      "Get an idea of the potential savings for your company.",
+    "simulator.disclaimer":
+      "This simulator offers only an illustrative estimate. Actual savings depend on a detailed analysis. Consult our specialists.",
+    "simulator.label.revenue": "Annual Revenue (BRL)",
+    "simulator.label.regime": "Current Tax Regime",
+    "simulator.placeholder.regime": "Select...",
+    "simulator.regime.simples": "Simples Nacional",
+    "simulator.regime.presumido": "Presumed Profit",
+    "simulator.regime.real": "Actual Profit",
+    "simulator.label.sector": "Main Sector (Optional)",
+    "simulator.placeholder.sector": "Select...",
+    "simulator.sector.servicos": "Services",
+    "simulator.sector.comercio": "Commerce",
+    "simulator.sector.industria": "Industry",
+    "simulator.sector.outro": "Other",
+    "simulator.button.simulate": "Simulate Potential",
+    "simulator.error.invalidInput":
+      "Please enter the annual revenue and select the tax regime.",
+    "simulator.result.text":
+      "Based on your information, your company *could* have a potential tax saving of",
+    "simulator.result.upTo": "up to",
+    "simulator.result.perYear": "per year with restructuring.",
+    "simulator.result.noSaving":
+      "Based on the information, optimizations may exist, but a detailed analysis is needed to identify potential savings.",
+    "simulator.cta": "Schedule a Free Analysis",
+    "tools.quiz.cta.title": "Quick Tax Diagnosis",
+    "tools.quiz.cta.desc":
+      "Is your company paying taxes correctly? Find out your risk level in minutes.",
+    "tools.quiz.cta.button": "Start Diagnosis",
+    "tools.simulator.cta.title": "Savings Simulator",
+    "tools.simulator.cta.desc":
+      "See an *illustrative* estimate of how much your company could save on taxes.",
+    "tools.simulator.cta.button": "Simulate Now",
+    "tools.backButton": "Back to Tools",
+    "hero.counter.clients": "Satisfied Clients",
+    "hero.counter.cases": "Cases Completed",
+    "whatsapp.modal.title": "Choose the office",
+    "whatsapp.modal.desc": "Select the location to direct your contact:",
+    "whatsapp.modal.poa": "Porto Alegre - RS",
+    "whatsapp.modal.gar": "Garanhuns - PE",
+  },
+};
+
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined
+);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>("pt")
+  const [language, setLanguage] = useState<Language>("pt");
 
   useEffect(() => {
-    const saved = localStorage.getItem("language") as Language
-    if (saved) setLanguage(saved)
-  }, [])
+    const saved = localStorage.getItem("language") as Language;
+    if (saved) setLanguage(saved);
+  }, []);
 
   const handleSetLanguage = (lang: Language) => {
-    setLanguage(lang)
-    localStorage.setItem("language", lang)
-  }
+    setLanguage(lang);
+    localStorage.setItem("language", lang);
+  };
 
-  const t = (key: string) => {
-    return translations[language][key as keyof typeof translations.pt] || key
-  }
+  const t = (key: string): string => {
+    // Tenta obter a tradução para o idioma atual
+    const langTranslations = translations[language];
+    // Verifica se a chave existe no objeto de tradução do idioma atual
+    if (
+      langTranslations &&
+      typeof langTranslations === "object" &&
+      key in langTranslations
+    ) {
+      // @ts-ignore Acessando a chave dinamicamente, o TS pode reclamar mas está correto aqui
+      return langTranslations[key] || key; // Retorna a tradução ou a própria chave se a tradução for vazia
+    }
+    // Fallback: Tenta obter a tradução em Português se não encontrar no idioma atual
+    const fallbackTranslations = translations.pt;
+    if (
+      fallbackTranslations &&
+      typeof fallbackTranslations === "object" &&
+      key in fallbackTranslations
+    ) {
+      // @ts-ignore
+      return fallbackTranslations[key] || key;
+    }
+    // Se não encontrar em lugar nenhum, retorna a chave
+    return key;
+  };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
+    <LanguageContext.Provider
+      value={{ language, setLanguage: handleSetLanguage, t }}
+    >
       {children}
     </LanguageContext.Provider>
-  )
+  );
 }
 
 export function useLanguage() {
-  const context = useContext(LanguageContext)
-  if (!context) throw new Error("useLanguage must be used within LanguageProvider")
-  return context
+  const context = useContext(LanguageContext);
+  if (!context)
+    throw new Error("useLanguage must be used within LanguageProvider");
+  return context;
 }

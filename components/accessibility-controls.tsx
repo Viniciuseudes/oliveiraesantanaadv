@@ -1,20 +1,29 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Globe, Type, Contrast } from "lucide-react"
-import { useLanguage } from "@/contexts/language-context"
-import { useAccessibility } from "@/contexts/accessibility-context"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button";
+import { Globe, Type } from "lucide-react"; // Removido 'Contrast'
+import { useLanguage } from "@/contexts/language-context";
+import { useAccessibility } from "@/contexts/accessibility-context";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface AccessibilityControlsProps {
-  variant?: "hero" | "header"
+  variant?: "hero" | "header";
 }
 
-export default function AccessibilityControls({ variant = "header" }: AccessibilityControlsProps) {
-  const { language, setLanguage } = useLanguage()
-  const { increaseFontSize, decreaseFontSize, resetFontSize, highContrast, toggleHighContrast } = useAccessibility()
+export default function AccessibilityControls({
+  variant = "header",
+}: AccessibilityControlsProps) {
+  const { language, setLanguage } = useLanguage();
+  // Removido 'highContrast' e 'toggleHighContrast' se não forem mais usados
+  const { increaseFontSize, decreaseFontSize, resetFontSize } =
+    useAccessibility();
 
-  const isHero = variant === "hero"
+  const isHero = variant === "hero";
 
   return (
     <div className={`flex items-center ${isHero ? "space-x-3" : "space-x-2"}`}>
@@ -24,15 +33,25 @@ export default function AccessibilityControls({ variant = "header" }: Accessibil
           <Button
             variant={isHero ? "outline" : "ghost"}
             size="icon"
-            className={`${isHero ? "h-11 w-11 bg-white/90 hover:bg-white border-[#4A1414]/20" : "h-9 w-9"}`}
-            aria-label={language === "pt" ? "Selecionar idioma" : "Select language"}
+            className={`${
+              isHero
+                ? "h-11 w-11 bg-white/90 hover:bg-white border-[#4A1414]/20"
+                : "h-9 w-9"
+            }`}
+            aria-label={
+              language === "pt" ? "Selecionar idioma" : "Select language"
+            }
           >
             <Globe className={`${isHero ? "h-5 w-5" : "h-4 w-4"}`} />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => setLanguage("pt")}>🇧🇷 Português {language === "pt" && "✓"}</DropdownMenuItem>
-          <DropdownMenuItem onClick={() => setLanguage("en")}>🇺🇸 English {language === "en" && "✓"}</DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setLanguage("pt")}>
+            🇧🇷 Português {language === "pt" && "✓"}
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => setLanguage("en")}>
+            🇺🇸 English {language === "en" && "✓"}
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
@@ -42,8 +61,16 @@ export default function AccessibilityControls({ variant = "header" }: Accessibil
           <Button
             variant={isHero ? "outline" : "ghost"}
             size="icon"
-            className={`${isHero ? "h-11 w-11 bg-white/90 hover:bg-white border-[#4A1414]/20" : "h-9 w-9"}`}
-            aria-label={language === "pt" ? "Ajustar tamanho da fonte" : "Adjust font size"}
+            className={`${
+              isHero
+                ? "h-11 w-11 bg-white/90 hover:bg-white border-[#4A1414]/20"
+                : "h-9 w-9"
+            }`}
+            aria-label={
+              language === "pt"
+                ? "Ajustar tamanho da fonte"
+                : "Adjust font size"
+            }
           >
             <Type className={`${isHero ? "h-5 w-5" : "h-4 w-4"}`} />
           </Button>
@@ -55,11 +82,14 @@ export default function AccessibilityControls({ variant = "header" }: Accessibil
           <DropdownMenuItem onClick={decreaseFontSize}>
             A- {language === "pt" ? "Diminuir" : "Decrease"}
           </DropdownMenuItem>
-          <DropdownMenuItem onClick={resetFontSize}>{language === "pt" ? "Padrão" : "Reset"}</DropdownMenuItem>
+          <DropdownMenuItem onClick={resetFontSize}>
+            {language === "pt" ? "Padrão" : "Reset"}
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
-      {/* High Contrast Toggle */}
+      {/* High Contrast Toggle - REMOVIDO */}
+      {/*
       <Button
         variant={isHero ? "outline" : "ghost"}
         size="icon"
@@ -78,6 +108,7 @@ export default function AccessibilityControls({ variant = "header" }: Accessibil
       >
         <Contrast className={`${isHero ? "h-5 w-5" : "h-4 w-4"}`} />
       </Button>
+      */}
     </div>
-  )
+  );
 }

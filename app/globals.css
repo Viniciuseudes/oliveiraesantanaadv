@@ -1,8 +1,10 @@
+/* app/globals.css - Código Completo com Modo High Contrast WCAG AA */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
+/* :root -> Mantém as cores ORIGINAIS do tema claro */
 :root {
   --background: oklch(0.98 0.005 85);
   --foreground: oklch(0.15 0.01 30);
@@ -15,7 +17,7 @@
   --secondary: oklch(0.65 0.01 30);
   --secondary-foreground: oklch(0.98 0.005 85);
   --muted: oklch(0.75 0.01 30);
-  --muted-foreground: oklch(0.45 0.01 30);
+  --muted-foreground: oklch(0.45 0.01 30); /* Baixo contraste original */
   --accent: oklch(0.25 0.05 15);
   --accent-foreground: oklch(0.98 0.005 85);
   --destructive: oklch(0.577 0.245 27.325);
@@ -39,6 +41,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* .dark -> Mantém as cores ORIGINAIS do tema escuro */
 .dark {
   --background: oklch(0.15 0.01 30);
   --foreground: oklch(0.98 0.005 85);
@@ -54,7 +57,7 @@
   --muted-foreground: oklch(0.65 0.01 30);
   --accent: oklch(0.35 0.01 30);
   --accent-foreground: oklch(0.98 0.005 85);
-  --destructive: oklch(0.396 0.141 25.723);
+  --destructive: oklch(0.396 0.141 25.723); /* Baixo contraste original como texto */
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.35 0.01 30);
   --input: oklch(0.35 0.01 30);
@@ -74,6 +77,83 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
+/* .high-contrast -> Aplica cores WCAG AA */
+.high-contrast {
+  /* Fundo escuro e texto claro (ex: Amarelo sobre Preto) */
+  --background: oklch(0 0 0); /* Preto */
+  --foreground: oklch(0.95 0.15 90); /* Amarelo claro */
+
+  /* Cores para outros elementos UI garantindo contraste */
+  --card: oklch(0.1 0 0);
+  --card-foreground: oklch(0.95 0.15 90);
+  --popover: oklch(0.1 0 0);
+  --popover-foreground: oklch(0.95 0.15 90);
+  --primary: oklch(0.95 0.15 90); /* Amarelo para botões primários */
+  --primary-foreground: oklch(0 0 0); /* Texto preto para botões primários */
+  --secondary: oklch(0.3 0 0); /* Cinza escuro */
+  --secondary-foreground: oklch(0.95 0.15 90);
+  --muted: oklch(0.2 0 0);
+  --muted-foreground: oklch(0.85 0.05 90); /* Amarelo mais suave */
+  --accent: oklch(0.3 0 0);
+  --accent-foreground: oklch(0.95 0.15 90);
+  --destructive: oklch(0.8 0.15 25); /* Vermelho CLARO para usar como texto ou indicador sobre fundo escuro */
+  --destructive-foreground: oklch(0 0 0); /* Mantido escuro caso destructive seja usado como fundo */
+  --border: oklch(0.95 0.15 90); /* Bordas amarelas */
+  --input: oklch(0.1 0 0);
+  --input-foreground: oklch(0.95 0.15 90); /* Texto dentro do input */
+  --ring: oklch(0.8 0.15 90); /* Anel de foco amarelo */
+
+  /* Cores específicas do Sidebar em alto contraste */
+  --sidebar: oklch(0 0 0);
+  --sidebar-foreground: oklch(0.95 0.15 90);
+  --sidebar-border: oklch(0.95 0.15 90);
+  --sidebar-accent: oklch(0.2 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0.15 90);
+  --sidebar-primary: oklch(0.95 0.15 90); /* Amarelo */
+  --sidebar-primary-foreground: oklch(0 0 0); /* Preto */
+}
+
+/* Garante que links sejam claramente visíveis no modo de alto contraste */
+.high-contrast a,
+.high-contrast button {
+  text-decoration: underline !important;
+  text-decoration-color: var(--foreground) !important; /* Usa a cor de texto principal do modo */
+  color: var(--foreground) !important;
+}
+.high-contrast button[aria-pressed="true"] { /* Estilo específico para botão de contraste ativo */
+    background-color: var(--primary) !important;
+    color: var(--primary-foreground) !important;
+}
+
+/* Garante que imagens/ícones que dependem de cor sejam visíveis no modo de alto contraste */
+.high-contrast img,
+.high-contrast svg {
+  /* Força cores mais básicas ou aplica filtros */
+   filter: grayscale(1) contrast(300%) brightness(1.5); /* Exemplo: alto contraste P&B */
+   /* background-color: white; /* Para SVGs que são máscaras */
+}
+/* Exceção para o logo no footer que já é branco */
+.high-contrast footer img {
+    filter: none;
+}
+/* Exceção para SVGs que não devem ser alterados (ex: ícones de bandeira no dropdown) */
+.high-contrast [data-slot="dropdown-menu-item"] svg { /* Exemplo genérico, ajustar seletor se necessário */
+    filter: none;
+}
+/* Exceção para ícones dentro do botão de contraste ativo */
+.high-contrast button[aria-pressed="true"] svg {
+    filter: none !important; /* Garante que o ícone mantenha a cor definida */
+    color: var(--primary-foreground) !important; /* Aplica a cor do texto do botão */
+}
+
+
+.high-contrast body {
+  background-color: var(--background) !important;
+  color: var(--foreground) !important;
+}
+
+
+/* Definições @theme inline (mantidas do original) */
 @theme inline {
   /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
   --font-sans: "Playfair Display", "Georgia", serif;
@@ -116,6 +196,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* Definições @layer base (mantidas do original) */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -133,7 +214,7 @@
   }
 }
 
-/* Custom animations for enhanced hero and section transitions */
+/* Custom animations (mantidas do original) */
 @keyframes float {
   0%,
   100% {
@@ -214,38 +295,7 @@
   animation: fade-in-up 0.6s ease-out forwards;
 }
 
-/* High contrast mode styles for accessibility */
-.high-contrast {
-  --background: oklch(0 0 0);
-  --foreground: oklch(1 0 0);
-  --card: oklch(0.1 0 0);
-  --card-foreground: oklch(1 0 0);
-  --primary: oklch(1 0 0);
-  --primary-foreground: oklch(0 0 0);
-  --border: oklch(1 0 0);
-  --muted: oklch(0.2 0 0);
-  --muted-foreground: oklch(0.9 0 0);
-  --secondary: oklch(0.3 0 0);
-  --secondary-foreground: oklch(1 0 0);
-  --accent: oklch(0.3 0 0);
-  --accent-foreground: oklch(1 0 0);
-}
-
-.high-contrast * {
-  border-color: oklch(1 0 0) !important;
-}
-
-.high-contrast button,
-.high-contrast a {
-  text-decoration: underline;
-}
-
-.high-contrast body {
-  background: oklch(0 0 0) !important;
-  color: oklch(1 0 0) !important;
-}
-
-/* Scroll-triggered animation utilities */
+/* Scroll-triggered animation utilities (mantidas do original) */
 .scroll-animate {
   opacity: 0;
   transform: translateY(30px);
@@ -288,4 +338,47 @@
 .scroll-animate-scale.visible {
   opacity: 1;
   transform: scale(1);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+/* Para Firefox (pode precisar de ajustes) */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+/* Estilos para o Wrapper com Watermark */
+.content-wrapper-with-watermark {
+  position: relative; /* Necessário para posicionar o pseudo-elemento */
+  z-index: 0; /* Garante que o conteúdo fique acima do watermark */
+}
+
+.content-wrapper-with-watermark::before {
+  content: ""; /* Essencial para pseudo-elementos */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Faz o pseudo-elemento cobrir toda a área do wrapper */
+  background-image: url('/justice.jpg'); /* Caminho da imagem na pasta public */
+  background-repeat: no-repeat;
+  background-position: center top; /* Posiciona no centro horizontal, perto do topo */
+  background-size: 500px auto;    /* Define um tamanho fixo (ajuste '500px' conforme necessário) */
+  background-attachment: fixed;   /* Mantém a imagem fixa enquanto a página rola */
+  opacity: 0.5;                  /* Deixa a imagem BEM sutil (ajuste entre 0.03 e 0.1) */
+  z-index: -1;                    /* Coloca o pseudo-elemento ATRÁS do conteúdo */
+  pointer-events: none;           /* Impede que a imagem interfira com cliques no conteúdo */
 }
