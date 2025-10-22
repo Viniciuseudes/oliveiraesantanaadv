@@ -378,7 +378,7 @@
   background-position: center top; /* Posiciona no centro horizontal, perto do topo */
   background-size: 500px auto;    /* Define um tamanho fixo (ajuste '500px' conforme necessário) */
   background-attachment: fixed;   /* Mantém a imagem fixa enquanto a página rola */
-  opacity: 0.5;                  /* Deixa a imagem BEM sutil (ajuste entre 0.03 e 0.1) */
+  opacity: 1;                  /* Deixa a imagem BEM sutil (ajuste entre 0.03 e 0.1) */
   z-index: -1;                    /* Coloca o pseudo-elemento ATRÁS do conteúdo */
   pointer-events: none;           /* Impede que a imagem interfira com cliques no conteúdo */
 }

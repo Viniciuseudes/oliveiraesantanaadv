@@ -70,7 +70,7 @@ export default function HeroSection() {
               }`}
             >
               <Image
-                src="/logo.png"
+                src="/logo1.png"
                 alt="Oliveira & Santana"
                 width={280}
                 height={280}
