@@ -18,8 +18,8 @@ const offices = [
     neighborhood: "Boa Viagem",
     cep: "", // CEP não foi fornecido
     state: "Recife - PE",
-    phone: "(81) 9999-9999", // <<< ATUALIZAR (Telefone placeholder)
-    email: "recife@oliveirasantana.adv.br", // <<< ATUALIZAR (Email placeholder)
+    phone: "(87) 9988-9988", // <<< ATUALIZAR (Telefone placeholder)
+    email: "almeidaraphael.adv@gmail.com / joanfelixadv@gmail.com", // <<< ATUALIZAR (Email placeholder)
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3950.39000806495!2d-34.90306158889047!3d-8.06129889200424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ab1f9f25a7698d%3A0x67a3855e7e1e406!2sAv.%20Domingos%20Ferreira%2C%201920%20-%20Empresarial%20Business%20Beach%20-%20Boa%20Viagem%2C%20Recife%20-%20PE%2C%2051111-020!5e0!3m2!1spt-BR!2sbr!4v1731370000000!5m2!1spt-BR!2sbr", // <<< ATUALIZAR (URL do mapa placeholder)
   },
@@ -29,8 +29,8 @@ const offices = [
     neighborhood: "Praia de Belas",
     cep: "CEP 90810-240",
     state: "Porto Alegre - RS",
-    phone: "(51) 3333-4444",
-    email: "poa@oliveirasantana.adv.br",
+    phone: "(51) 99621-4554",
+    email: "almeidaraphael.adv@gmail.com / joanfelixadv@gmail.com",
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.2!2d-51.2287!3d-30.0368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAyJzEyLjUiUyA1McKwMTMnNDMuMyJX!5e0!3m2!1spt-BR!2sbr!4v1234567890",
   },
@@ -40,8 +40,8 @@ const offices = [
     neighborhood: "Heliópolis",
     cep: "",
     state: "Garanhuns - PE",
-    phone: "(87) 3333-5555",
-    email: "garanhuns@oliveirasantana.adv.br",
+    phone: "(87) 9988-9988",
+    email: "almeidaraphael.adv@gmail.com / joanfelixadv@gmail.com",
     mapUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.5!2d-36.4927!3d-8.8903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNTMnMjUuMSJTIDM2wrAyOSczMy43Ilc!5e0!3m2!1spt-BR!2sbr!4v1234567890",
   },

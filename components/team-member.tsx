@@ -53,7 +53,7 @@ export default function TeamMember({ member, index }: TeamMemberProps) {
             src={member.image || "/placeholder.svg"}
             alt={member.name}
             fill
-            className="object-cover object-['center_30%'] group-hover:scale-110 transition-transform duration-500"
+            className="object-cover object-top group-hover:scale-110 transition-transform duration-500" // <-- Esta foi a Correção 1 (no Card)
           />
           {/* --- ALTERADO: Gradiente --- */}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-80" />
@@ -91,7 +91,7 @@ export default function TeamMember({ member, index }: TeamMemberProps) {
                     src={member.image || "/placeholder.svg"}
                     alt={member.name}
                     fill
-                    className="object-cover object-center"
+                    className="object-cover object-top" // <-- ESTA É A CORREÇÃO 2 (dentro do Modal)
                   />
                 </div>
                 {/* --- ALTERADO: Cor do texto --- */}

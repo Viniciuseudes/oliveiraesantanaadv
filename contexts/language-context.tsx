@@ -222,6 +222,7 @@ const translations = {
     "whatsapp.modal.desc": "Selecione o local para direcionarmos seu contato:",
     "whatsapp.modal.poa": "Porto Alegre - RS",
     "whatsapp.modal.gar": "Garanhuns - PE",
+    "whatsapp.modal.rec": "Recife - PE",
   },
   en: {
     // Hero
@@ -427,6 +428,7 @@ const translations = {
     "whatsapp.modal.desc": "Select the location to direct your contact:",
     "whatsapp.modal.poa": "Porto Alegre - RS",
     "whatsapp.modal.gar": "Garanhuns - PE",
+    "whatsapp.modal.rec": "Recife - PE",
   },
 };
 

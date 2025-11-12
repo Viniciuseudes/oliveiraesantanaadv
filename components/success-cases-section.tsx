@@ -56,10 +56,11 @@ export default function SuccessCasesSection() {
   ];
 
   return (
-    // --- ALTERADO: Fundo (para um tom de azul mais claro) ---
+    // --- ALTERADO: Fundo E ADICIONADO ID ---
     <section
       ref={sectionRef}
       className="py-20 md:py-32 bg-card text-foreground"
+      id="casos" // <-- CORREÇÃO AQUI
     >
       <div className="container mx-auto px-4">
         <div

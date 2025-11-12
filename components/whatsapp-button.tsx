@@ -18,9 +18,21 @@ export default function WhatsAppButton() {
   const { language, t } = useLanguage();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const handleWhatsAppRedirect = (location: string) => {
-    // ... (função mantida)
+  // --- FUNÇÃO ATUALIZADA ---
+  // Agora ela aceita o número de telefone como argumento
+  const handleWhatsAppRedirect = (location: string, phoneNumber: string) => {
+    const message =
+      language === "pt"
+        ? `Olá, gostaria de agendar uma consulta no escritório de ${location}.`
+        : `Hello, I would like to schedule a consultation at the ${location} office.`;
+
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
+    setIsDialogOpen(false); // Fecha o modal após o clique
   };
+  // --- FIM DA ATUALIZAÇÃO ---
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -38,7 +50,7 @@ export default function WhatsAppButton() {
         </Button>
       </DialogTrigger>
 
-      {/* Conteúdo do Modal */}
+      {/* Conteúdo do Modal - ATUALIZADO */}
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           {/* --- ALTERADO: Cor do Título --- */}
@@ -51,18 +63,31 @@ export default function WhatsAppButton() {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          {/* --- ALTERADO: Cores dos botões --- */}
+          {/* --- ALTERADO: Cores dos botões e OnClick --- */}
           <Button
             className="bg-primary text-primary-foreground hover:bg-primary/90 justify-start py-6 text-base"
-            onClick={() => handleWhatsAppRedirect("Porto Alegre")}
+            onClick={() =>
+              handleWhatsAppRedirect("Porto Alegre", "5551996214554")
+            }
           >
             <MapPin className="mr-3 h-5 w-5" />
             {t("whatsapp.modal.poa") || "Porto Alegre - RS"}
           </Button>
 
+          {/* --- NOVO BOTÃO RECIFE --- */}
           <Button
             className="bg-primary text-primary-foreground hover:bg-primary/90 justify-start py-6 text-base"
-            onClick={() => handleWhatsAppRedirect("Garanhuns")}
+            onClick={() => handleWhatsAppRedirect("Recife", "5587999889988")}
+          >
+            <MapPin className="mr-3 h-5 w-5" />
+            {t("whatsapp.modal.rec") || "Recife - PE"}{" "}
+            {/* Chave de tradução nova */}
+          </Button>
+
+          {/* --- ALTERADO: OnClick --- */}
+          <Button
+            className="bg-primary text-primary-foreground hover:bg-primary/90 justify-start py-6 text-base"
+            onClick={() => handleWhatsAppRedirect("Garanhuns", "5587999889988")}
           >
             <MapPin className="mr-3 h-5 w-5" />
             {t("whatsapp.modal.gar") || "Garanhuns - PE"}

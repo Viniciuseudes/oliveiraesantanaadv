@@ -46,29 +46,31 @@ const AboutSection = () => {
     },
   ];
 
+  // --- EQUIPE ATUALIZADA CONFORME SOLICITADO ---
   const team = [
     {
+      name: "Joan Felix Oliveira da Silva",
+      specialty: "Direito Tributário",
+      oab: "OAB/PE 38.146",
+      image: "joan.png", // Usando a foto placeholder
+      bio: "Advogado com mais de 10 anos de atuação em todo o Brasil, com ampla experiência em Transação Tributária.",
+    },
+    {
       name: "Raphael Oliveira",
-      specialty: t("areas.tax"),
-      oab: "OAB/RS 45.678",
-      image: "/team-photo1.jpg",
-      bio: t("team.raphael.bio"),
+      specialty: "Direito Empresarial",
+      oab: "OAB/RS 45.678", // Mantida a OAB do código anterior
+      image: "/team-photo1.jpg", // Foto correta do Raphael
+      bio: "Advogado, pós-graduado em Direito Empresarial, e Conselheiro da OAB Subseccional Garanhuns/PE, nos triênios 2022/2024 e 2025/2027.",
     },
     {
-      name: "Joan",
-      specialty: t("areas.corporate"),
-      oab: "OAB/PE 32.456",
-      image: "/team-photo.png",
-      bio: t("team.joan.bio"),
-    },
-    {
-      name: "Caline",
-      specialty: `${t("areas.tax")} e ${t("areas.corporate")}`,
-      oab: "OAB/RS 51.234",
-      image: "/team-photo.png",
-      bio: t("team.caline.bio"),
+      name: "Mayara Naytania",
+      specialty: "Direito Trabalhista Empresarial",
+      oab: "OAB/PE nº 57.739",
+      image: "/joan (1).png", // Usando a foto placeholder
+      bio: "Advogada especializada em Direito Trabalhista Preventivo Empresarial. Atua na construção de relações de trabalho éticas, seguras e sustentáveis, com foco em conformidade e prevenção jurídica.",
     },
   ];
+  // --- FIM DA ATUALIZAÇÃO ---
 
   return (
     // --- ALTERADO: Fundo ---

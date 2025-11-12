@@ -2,11 +2,24 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Linkedin, Instagram } from "lucide-react";
+import { Instagram } from "lucide-react"; // LinkedIn foi removido daqui
 import { useLanguage } from "@/contexts/language-context";
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage(); // Adicionado 'language' para os links dinâmicos
+
+  // Lista completa de links rápidos
+  const navItems = [
+    { id: "sobre", label: t("footer.about") },
+    { id: "areas-atuacao", label: t("footer.areas") },
+    {
+      id: "diferenciais",
+      label: language === "pt" ? "Diferenciais" : "Why Us",
+    },
+    { id: "casos", label: language === "pt" ? "Casos" : "Cases" },
+    { id: "instagram", label: t("footer.instagram") },
+    { id: "contato", label: t("footer.contact") },
+  ];
 
   return (
     // --- ALTERADO: Cor de fundo (será um azul mais escuro) ---
@@ -28,55 +41,35 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick links */}
+          {/* Quick links - ATUALIZADO */}
           <div>
             <h4 className="font-sans font-bold text-lg mb-4">
               {t("footer.links")}
             </h4>
             <ul className="space-y-2">
-              <li>
-                <Link
-                  href="#quem-somos"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  {t("footer.about")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#areas-atuacao"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  {t("footer.areas")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#contato"
-                  className="text-white/70 hover:text-white transition-colors"
-                >
-                  {t("footer.contact")}
-                </Link>
-              </li>
+              {/* Loop para todos os links rápidos */}
+              {navItems.map((item) => (
+                <li key={item.id}>
+                  <Link
+                    href={`#${item.id}`} // Link de âncora
+                    className="text-white/70 hover:text-white transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Social media */}
+          {/* Social media - ATUALIZADO */}
           <div>
             <h4 className="font-sans font-bold text-lg mb-4">
               {t("footer.social")}
             </h4>
             <div className="flex gap-4">
+              {/* --- LINKEDIN REMOVIDO --- */}
               <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/oliveiraesantana.adv/" // <-- LINK ATUALIZADO
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"

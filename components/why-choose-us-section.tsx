@@ -51,8 +51,12 @@ export default function WhyChooseUsSection() {
   ];
 
   return (
-    // --- ALTERADO: Fundo ---
-    <section ref={sectionRef} className="py-20 md:py-32 bg-background">
+    // --- ALTERADO: Fundo E ADICIONADO ID ---
+    <section
+      ref={sectionRef}
+      className="py-20 md:py-32 bg-background"
+      id="diferenciais" // <-- CORREÇÃO AQUI
+    >
       <div className="container mx-auto px-4">
         <div
           className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-1000 ${

@@ -53,8 +53,8 @@ export default function PracticeAreasSection() {
   return (
     <section
       ref={sectionRef}
-      // --- ALTERADO: Fundo ---
-      className="py-20 md:py-32 bg-transparent"
+      // --- ALTERADO: Fundo (de transparent para background) ---
+      className="py-20 md:py-32 bg-background" // <-- MUDANÇA AQUI
       id="areas-atuacao"
     >
       <div className="container mx-auto px-4">
@@ -84,13 +84,13 @@ export default function PracticeAreasSection() {
               }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              <CardContent className="p-8 flex flex-col flex-grow">
-                {/* --- ALTERADO: Cor do box do ícone --- */}
-                <div className="w-20 h-20 bg-secondary rounded-2xl flex items-center justify-center mb-6 shadow-lg">
-                  <area.icon className="h-10 w-10 text-foreground" />
+              <CardContent className="p-8 flex flex-col flex-grow text-center">
+                {/* --- ALTERADO: Estilo do Ícone (para ficar igual aos outros) --- */}
+                <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <area.icon className="h-8 w-8 text-foreground" />
                 </div>
-                {/* --- ALTERADO: Cores de texto --- */}
-                <h3 className="text-3xl font-sans font-bold text-foreground mb-6">
+                {/* --- ALTERADO: Tamanho e margem do Título (para ficar igual aos outros) --- */}
+                <h3 className="text-2xl font-sans font-bold text-foreground mb-4">
                   {area.title}
                 </h3>
                 <p className="text-muted-foreground leading-relaxed">
