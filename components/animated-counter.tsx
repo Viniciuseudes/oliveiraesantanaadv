@@ -69,12 +69,15 @@ export default function AnimatedCounter({
   return (
     <div ref={counterRef} className="text-center">
       {Icon && (
-        <Icon className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 text-[#6B6B6B]" />
+        // --- ALTERADO: Cor do ícone ---
+        <Icon className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 text-muted-foreground" />
       )}
-      <div className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-[#4A1414]">
+      {/* --- ALTERADO: Cor do número --- */}
+      <div className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-foreground">
         {currentValue.toLocaleString("pt-BR")}+
       </div>
-      <p className="text-sm md:text-base text-[#6B6B6B] mt-1">{label}</p>
+      {/* --- ALTERADO: Cor do label --- */}
+      <p className="text-sm md:text-base text-muted-foreground mt-1">{label}</p>
     </div>
   );
 }

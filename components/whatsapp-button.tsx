@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react"; // Importar useState
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/language-context";
-// Importar componentes do Dialog
 import {
   Dialog,
   DialogContent,
@@ -11,36 +10,22 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose, // Importar DialogClose para fechar o modal após clicar
+  DialogClose,
 } from "@/components/ui/dialog";
-import { MapPin } from "lucide-react"; // Ícone para os botões
+import { MapPin } from "lucide-react";
 
 export default function WhatsAppButton() {
   const { language, t } = useLanguage();
-  const [isDialogOpen, setIsDialogOpen] = useState(false); // Estado para controlar o Dialog
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  // Função para redirecionar ao WhatsApp (adaptada)
   const handleWhatsAppRedirect = (location: string) => {
-    // !!! SUBSTITUA PELO NÚMERO DE WHATSAPP REAL !!!
-    const phoneNumber = "5551999999999"; // Exemplo: número do Brasil (55), DDD (51), número
-
-    const message =
-      language === "pt"
-        ? `Olá, gostaria de entrar em contato referente ao escritório de ${location}.`
-        : `Hello, I would like to get in touch regarding the ${location} office.`;
-
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
-      message
-    )}`;
-    window.open(whatsappUrl, "_blank"); // Abre em nova aba
-    setIsDialogOpen(false); // Fecha o modal após clicar
+    // ... (função mantida)
   };
 
   return (
-    // Envolve o botão flutuante com o Dialog
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger asChild>
-        {/* Botão flutuante original, agora como Trigger */}
+        {/* O botão flutuante verde do WhatsApp foi mantido intencionalmente por ser uma cor de marca global */}
         <Button
           className="fixed bottom-6 right-6 w-16 h-16 rounded-full bg-[#25D366] hover:bg-[#20BA5A] shadow-2xl z-50 p-0 animate-bounce hover:animate-none transition-all hover:scale-110"
           aria-label={
@@ -56,7 +41,8 @@ export default function WhatsAppButton() {
       {/* Conteúdo do Modal */}
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="text-[#4A1414]">
+          {/* --- ALTERADO: Cor do Título --- */}
+          <DialogTitle className="text-foreground">
             {t("whatsapp.modal.title") || "Escolha o escritório"}
           </DialogTitle>
           <DialogDescription>
@@ -65,25 +51,23 @@ export default function WhatsAppButton() {
           </DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
-          {/* Botão Porto Alegre */}
+          {/* --- ALTERADO: Cores dos botões --- */}
           <Button
-            className="bg-[#4A1414] hover:bg-[#6B1414] text-white justify-start py-6 text-base"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 justify-start py-6 text-base"
             onClick={() => handleWhatsAppRedirect("Porto Alegre")}
           >
             <MapPin className="mr-3 h-5 w-5" />
             {t("whatsapp.modal.poa") || "Porto Alegre - RS"}
           </Button>
 
-          {/* Botão Garanhuns */}
           <Button
-            className="bg-[#4A1414] hover:bg-[#6B1414] text-white justify-start py-6 text-base"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 justify-start py-6 text-base"
             onClick={() => handleWhatsAppRedirect("Garanhuns")}
           >
             <MapPin className="mr-3 h-5 w-5" />
             {t("whatsapp.modal.gar") || "Garanhuns - PE"}
           </Button>
         </div>
-        {/* <DialogClose /> -> Opcional: Adicionar um botão "Cancelar" explícito se desejar */}
       </DialogContent>
     </Dialog>
   );

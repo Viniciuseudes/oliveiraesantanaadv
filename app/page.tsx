@@ -16,15 +16,13 @@ export default function Home() {
       <StickyHeader />
       <HeroSection />
 
-      {/* --- Wrapper Div para Watermark --- */}
-      <div className="content-wrapper-with-watermark">
-        <AboutSection />
-        <PracticeAreasSection />
-        <InteractiveToolsSection />
-        <WhyChooseUsSection />
-        <SuccessCasesSection />
-        <ContactSection />
-      </div>
+      {/* --- Wrapper Div REMOVIDO --- */}
+      <AboutSection />
+      <PracticeAreasSection />
+      <InteractiveToolsSection />
+      <WhyChooseUsSection />
+      <SuccessCasesSection />
+      <ContactSection />
       {/* --- Fim do Wrapper Div --- */}
 
       <Footer />

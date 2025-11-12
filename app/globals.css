@@ -1,72 +1,48 @@
-/* app/globals.css - Código Completo com Modo High Contrast WCAG AA */
+/* app/globals.css - Código Completo com Fundo CSS */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
-/* :root -> Mantém as cores ORIGINAIS do tema claro */
+/* :root -> NOVAS CORES (TEMA DARK BLUE) */
 :root {
-  --background: oklch(0.98 0.005 85);
-  --foreground: oklch(0.15 0.01 30);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.01 30);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.01 30);
-  --primary: oklch(0.25 0.05 15);
-  --primary-foreground: oklch(0.98 0.005 85);
-  --secondary: oklch(0.65 0.01 30);
+  /* Convertido #081c29 para oklch */
+  --background: oklch(17.37% 0.04 259.56);
+  --foreground: oklch(0.98 0.005 85); /* Texto branco */
+
+  /* Cards e Popovers um tom mais claro que o fundo */
+  --card: oklch(20% 0.04 259.56);
+  --card-foreground: oklch(0.98 0.005 85);
+  --popover: oklch(20% 0.04 259.56);
+  --popover-foreground: oklch(0.98 0.005 85);
+
+  /* Primário (Branco) e Texto Primário (Azul) */
+  --primary: oklch(1 0 0); /* Branco */
+  --primary-foreground: oklch(17.37% 0.04 259.56); /* Azul */
+
+  /* Secundário (Azul mais claro/cinza) */
+  --secondary: oklch(0.35 0.01 30);
   --secondary-foreground: oklch(0.98 0.005 85);
-  --muted: oklch(0.75 0.01 30);
-  --muted-foreground: oklch(0.45 0.01 30); /* Baixo contraste original */
-  --accent: oklch(0.25 0.05 15);
+  --muted: oklch(0.35 0.01 30);
+  --muted-foreground: oklch(0.65 0.01 30); /* Cinza claro p/ textos */
+
+  /* Accent (Hover) */
+  --accent: oklch(0.35 0.01 30);
   --accent-foreground: oklch(0.98 0.005 85);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.85 0.01 30);
-  --input: oklch(0.85 0.01 30);
-  --ring: oklch(0.25 0.05 15);
+
+  --destructive: oklch(0.577 0.245 27.325); /* Vermelho */
+  --destructive-foreground: oklch(0.985 0 0); /* Branco */
+
+  --border: oklch(0.35 0.01 30); /* Borda sutil */
+  --input: oklch(0.35 0.01 30);
+  --ring: oklch(0.98 0.005 85); /* Anel de foco branco */
+
   --chart-1: oklch(0.25 0.05 15);
   --chart-2: oklch(0.65 0.01 30);
   --chart-3: oklch(0.75 0.01 30);
   --chart-4: oklch(0.55 0.01 30);
   --chart-5: oklch(0.45 0.01 30);
   --radius: 0.5rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-/* .dark -> Mantém as cores ORIGINAIS do tema escuro */
-.dark {
-  --background: oklch(0.15 0.01 30);
-  --foreground: oklch(0.98 0.005 85);
-  --card: oklch(0.2 0.01 30);
-  --card-foreground: oklch(0.98 0.005 85);
-  --popover: oklch(0.2 0.01 30);
-  --popover-foreground: oklch(0.98 0.005 85);
-  --primary: oklch(0.98 0.005 85);
-  --primary-foreground: oklch(0.15 0.01 30);
-  --secondary: oklch(0.35 0.01 30);
-  --secondary-foreground: oklch(0.98 0.005 85);
-  --muted: oklch(0.35 0.01 30);
-  --muted-foreground: oklch(0.65 0.01 30);
-  --accent: oklch(0.35 0.01 30);
-  --accent-foreground: oklch(0.98 0.005 85);
-  --destructive: oklch(0.396 0.141 25.723); /* Baixo contraste original como texto */
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.35 0.01 30);
-  --input: oklch(0.35 0.01 30);
-  --ring: oklch(0.65 0.01 30);
-  --chart-1: oklch(0.25 0.05 15);
-  --chart-2: oklch(0.65 0.01 30);
-  --chart-3: oklch(0.75 0.01 30);
-  --chart-4: oklch(0.55 0.01 30);
-  --chart-5: oklch(0.45 0.01 30);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -77,7 +53,7 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-/* .high-contrast -> Aplica cores WCAG AA */
+/* .high-contrast -> Mantido como estava, para acessibilidade */
 .high-contrast {
   /* Fundo escuro e texto claro (ex: Amarelo sobre Preto) */
   --background: oklch(0 0 0); /* Preto */
@@ -156,7 +132,7 @@
 /* Definições @theme inline (mantidas do original) */
 @theme inline {
   /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
-  --font-sans: "Playfair Display", "Georgia", serif;
+  --font-sans: "Inter", "system-ui", sans-serif;
   --font-mono: "Inter", "system-ui", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -203,14 +179,27 @@
   }
   body {
     @apply bg-background text-foreground font-mono;
+
+    /* --- ESTA É A NOVA SEÇÃO DE FUNDO --- */
+    background-color: var(--background);
+    background-image: 
+      /* 1. Filtro de Ruído (Noise) */
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E"),
+      
+      /* 2. Vinheta Sutil (Vignette) */
+      radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+    
+    background-attachment: fixed; /* Isso faz o fundo ficar parado */
+    /* --- FIM DA NOVA SEÇÃO --- */
   }
+  
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    @apply font-sans;
+    @apply font-mono;
   }
 }
 
@@ -360,25 +349,5 @@
   scrollbar-color: #888 #f1f1f1;
 }
 
-/* Estilos para o Wrapper com Watermark */
-.content-wrapper-with-watermark {
-  position: relative; /* Necessário para posicionar o pseudo-elemento */
-  z-index: 0; /* Garante que o conteúdo fique acima do watermark */
-}
-
-.content-wrapper-with-watermark::before {
-  content: ""; /* Essencial para pseudo-elementos */
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; /* Faz o pseudo-elemento cobrir toda a área do wrapper */
-  background-image: url('/justice.jpg'); /* Caminho da imagem na pasta public */
-  background-repeat: no-repeat;
-  background-position: center top; /* Posiciona no centro horizontal, perto do topo */
-  background-size: 500px auto;    /* Define um tamanho fixo (ajuste '500px' conforme necessário) */
-  background-attachment: fixed;   /* Mantém a imagem fixa enquanto a página rola */
-  opacity: 1;                  /* Deixa a imagem BEM sutil (ajuste entre 0.03 e 0.1) */
-  z-index: -1;                    /* Coloca o pseudo-elemento ATRÁS do conteúdo */
-  pointer-events: none;           /* Impede que a imagem interfira com cliques no conteúdo */
-}
+/* --- CLASSE .content-wrapper-with-watermark REMOVIDA --- */
+/* (Não é mais necessária pois o fundo está no BODY) */

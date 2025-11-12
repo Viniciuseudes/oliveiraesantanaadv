@@ -97,24 +97,22 @@ export default function TaxSimulator() {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-white">
-      {" "}
-      {/* Fundo branco para alternar com a seção anterior */}
+    <section className="py-20 md:py-32 bg-transparent">
       <div className="container mx-auto px-4 max-w-3xl">
-        <Card className="shadow-xl border-none overflow-hidden">
-          <CardHeader className="bg-[#4A1414] text-white p-6">
+        <Card className="shadow-xl border-border overflow-hidden bg-card">
+          <CardHeader className="bg-secondary text-foreground p-6">
             <CardTitle className="text-2xl font-sans text-center flex items-center justify-center gap-2">
               <Calculator className="h-6 w-6" />
               {t("simulator.title") ||
                 "Simulador (Ilustrativo) de Economia Tributária"}
             </CardTitle>
-            <CardDescription className="text-white/80 text-center text-sm mt-1">
+            <CardDescription className="text-foreground/80 text-center text-sm mt-1">
               {t("simulator.description") ||
                 "Tenha uma ideia do potencial de economia para sua empresa."}
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6 md:p-8 space-y-6">
-            <div className="p-3 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-800 text-sm rounded-r-md">
+            <div className="p-3 bg-yellow-900/50 border-l-4 border-yellow-500 text-yellow-200 text-sm rounded-r-md">
               <AlertCircle className="inline h-4 w-4 mr-1" />
               {t("simulator.disclaimer") ||
                 "Este simulador oferece apenas uma estimativa ilustrativa. A economia real depende de uma análise detalhada. Consulte nossos especialistas."}
@@ -124,7 +122,7 @@ export default function TaxSimulator() {
               <div>
                 <Label
                   htmlFor="faturamento"
-                  className="text-[#4A1414] font-medium"
+                  className="text-foreground font-medium"
                 >
                   {t("simulator.label.revenue") || "Faturamento Anual (R$)"}
                 </Label>
@@ -133,18 +131,18 @@ export default function TaxSimulator() {
                   value={faturamento}
                   onChange={handleFaturamentoChange}
                   placeholder="R$ 1.000.000,00"
-                  className="mt-1 border-[#6B6B6B]/30"
+                  className="mt-1 border-border"
                   inputMode="numeric" // Melhora a experiência mobile
                 />
               </div>
               <div>
-                <Label htmlFor="regime" className="text-[#4A1414] font-medium">
+                <Label htmlFor="regime" className="text-foreground font-medium">
                   {t("simulator.label.regime") || "Regime Tributário Atual"}
                 </Label>
                 <Select value={regime} onValueChange={setRegime}>
                   <SelectTrigger
                     id="regime"
-                    className="mt-1 border-[#6B6B6B]/30 w-full"
+                    className="mt-1 border-border w-full"
                   >
                     <SelectValue
                       placeholder={
@@ -167,14 +165,11 @@ export default function TaxSimulator() {
               </div>
             </div>
             <div>
-              <Label htmlFor="setor" className="text-[#4A1414] font-medium">
+              <Label htmlFor="setor" className="text-foreground font-medium">
                 {t("simulator.label.sector") || "Setor Principal (Opcional)"}
               </Label>
               <Select value={setor} onValueChange={setSetor}>
-                <SelectTrigger
-                  id="setor"
-                  className="mt-1 border-[#6B6B6B]/30 w-full"
-                >
+                <SelectTrigger id="setor" className="mt-1 border-border w-full">
                   <SelectValue
                     placeholder={
                       t("simulator.placeholder.sector") || "Selecione..."
@@ -200,15 +195,15 @@ export default function TaxSimulator() {
 
             <Button
               onClick={handleSimulate}
-              className="w-full bg-[#4A1414] hover:bg-[#6B1414] text-white py-3 text-lg mt-4"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-3 text-lg mt-4"
             >
               {t("simulator.button.simulate") || "Simular Potencial"}
             </Button>
 
             {showResult && (
-              <div className="mt-8 p-6 bg-green-50 border-l-4 border-green-600 rounded-r-md text-center">
+              <div className="mt-8 p-6 bg-green-900/50 border-l-4 border-green-500 rounded-r-md text-center">
                 {potentialSaving !== null && potentialSaving > 0 ? (
-                  <p className="text-green-800 text-lg">
+                  <p className="text-green-200 text-lg">
                     {t("simulator.result.text") ||
                       "Com base nas suas informações, sua empresa *poderia* ter um potencial de economia tributária de"}{" "}
                     **{t("simulator.result.upTo") || "até"}{" "}
@@ -217,7 +212,7 @@ export default function TaxSimulator() {
                       "por ano com uma reestruturação."}
                   </p>
                 ) : (
-                  <p className="text-green-800 text-lg">
+                  <p className="text-green-200 text-lg">
                     {t("simulator.result.noSaving") ||
                       "Com base nas informações, otimizações podem existir, mas uma análise detalhada é necessária para identificar potenciais economias."}
                   </p>
@@ -225,11 +220,11 @@ export default function TaxSimulator() {
                 <Button
                   onClick={scrollToContact}
                   size="lg"
-                  className="mt-6 bg-[#4A1414] hover:bg-[#6B1414] text-white"
+                  className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   {t("simulator.cta") || "Agende uma Análise Gratuita"}
                 </Button>
-                <p className="text-xs text-green-700 mt-2">
+                <p className="text-xs text-green-300 mt-2">
                   * {t("simulator.disclaimer") || "Estimativa ilustrativa."}
                 </p>
               </div>

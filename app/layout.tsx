@@ -1,12 +1,14 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+// --- ALTERADO DE Playfair_Display PARA Inter ---
+import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { LanguageProvider } from "@/contexts/language-context";
 import { AccessibilityProvider } from "@/contexts/accessibility-context";
 import "./globals.css";
 
-const playfairDisplay = Playfair_Display({
+// --- ALTERADO ---
+const interSans = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -31,7 +33,8 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body
-        className={`${playfairDisplay.variable} ${inter.variable} font-mono antialiased overflow-x-hidden`}
+        // --- ALTERADO ---
+        className={`${interSans.variable} ${inter.variable} font-mono antialiased overflow-x-hidden`}
       >
         <AccessibilityProvider>
           <LanguageProvider>{children}</LanguageProvider>

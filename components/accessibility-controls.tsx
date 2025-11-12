@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Globe, Type } from "lucide-react"; // Removido 'Contrast'
+import { Globe, Type } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 import { useAccessibility } from "@/contexts/accessibility-context";
 import {
@@ -19,7 +19,6 @@ export default function AccessibilityControls({
   variant = "header",
 }: AccessibilityControlsProps) {
   const { language, setLanguage } = useLanguage();
-  // Removido 'highContrast' e 'toggleHighContrast' se não forem mais usados
   const { increaseFontSize, decreaseFontSize, resetFontSize } =
     useAccessibility();
 
@@ -31,11 +30,12 @@ export default function AccessibilityControls({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
+            // --- ALTERADO: Cores dos botões de acessibilidade ---
             variant={isHero ? "outline" : "ghost"}
             size="icon"
             className={`${
               isHero
-                ? "h-11 w-11 bg-white/90 hover:bg-white border-[#4A1414]/20"
+                ? "h-11 w-11 bg-primary/10 hover:bg-primary/20 border-primary/20"
                 : "h-9 w-9"
             }`}
             aria-label={
@@ -59,11 +59,12 @@ export default function AccessibilityControls({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
+            // --- ALTERADO: Cores dos botões de acessibilidade ---
             variant={isHero ? "outline" : "ghost"}
             size="icon"
             className={`${
               isHero
-                ? "h-11 w-11 bg-white/90 hover:bg-white border-[#4A1414]/20"
+                ? "h-11 w-11 bg-primary/10 hover:bg-primary/20 border-primary/20"
                 : "h-9 w-9"
             }`}
             aria-label={
@@ -87,28 +88,6 @@ export default function AccessibilityControls({
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
-
-      {/* High Contrast Toggle - REMOVIDO */}
-      {/*
-      <Button
-        variant={isHero ? "outline" : "ghost"}
-        size="icon"
-        onClick={toggleHighContrast}
-        className={`${isHero ? "h-11 w-11 border-[#4A1414]/20" : "h-9 w-9"} ${
-          highContrast
-            ? isHero
-              ? "bg-[#4A1414] text-white hover:bg-[#6B1414] hover:text-white"
-              : "bg-[#4A1414] text-white hover:bg-[#6B1414] hover:text-white"
-            : isHero
-              ? "bg-white/90 hover:bg-white"
-              : ""
-        }`}
-        aria-label={language === "pt" ? "Alternar alto contraste" : "Toggle high contrast"}
-        aria-pressed={highContrast}
-      >
-        <Contrast className={`${isHero ? "h-5 w-5" : "h-4 w-4"}`} />
-      </Button>
-      */}
     </div>
   );
 }

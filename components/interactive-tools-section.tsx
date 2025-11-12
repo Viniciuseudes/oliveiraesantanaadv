@@ -11,11 +11,10 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { FileQuestion, Calculator, ArrowRight } from "lucide-react";
-import InteractiveQuiz from "./interactive-quiz"; // Importa o componente do quiz
-import TaxSimulator from "./tax-simulator"; // Importa o componente do simulador
+import InteractiveQuiz from "./interactive-quiz";
+import TaxSimulator from "./tax-simulator";
 import { useLanguage } from "@/contexts/language-context";
 
-// Define os possíveis estados: 'none', 'quiz', 'simulator'
 type ActiveTool = "none" | "quiz" | "simulator";
 
 export default function InteractiveToolsSection() {
@@ -25,23 +24,21 @@ export default function InteractiveToolsSection() {
   const renderContent = () => {
     switch (activeTool) {
       case "quiz":
-        // Passamos uma função para voltar à seleção
-        return <InteractiveQuiz />; // O quiz já tem botão de refazer/fechar implicitamente
+        return <InteractiveQuiz />;
       case "simulator":
-        // Passamos uma função para voltar à seleção
-        return <TaxSimulator />; // O simulador pode precisar de um botão "Voltar" se quisermos
+        return <TaxSimulator />;
       default:
-        // Renderiza os CTAs
         return (
           <div className="grid md:grid-cols-2 gap-8">
             {/* CTA para o Quiz */}
-            <Card className="shadow-lg border-none hover:shadow-xl transition-shadow flex flex-col">
+            {/* --- ALTERADO: Cores --- */}
+            <Card className="shadow-lg border-border hover:shadow-xl transition-shadow flex flex-col bg-card">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-[#4A1414]">
+                <CardTitle className="flex items-center gap-2 text-foreground">
                   <FileQuestion className="h-6 w-6" />
                   {t("tools.quiz.cta.title") || "Diagnóstico Fiscal Rápido"}
                 </CardTitle>
-                <CardDescription className="text-[#6B6B6B]">
+                <CardDescription className="text-muted-foreground">
                   {t("tools.quiz.cta.desc") ||
                     "Sua empresa paga impostos corretamente? Descubra seu nível de risco em minutos."}
                 </CardDescription>
@@ -49,7 +46,7 @@ export default function InteractiveToolsSection() {
               <CardContent className="flex-grow flex items-end">
                 <Button
                   onClick={() => setActiveTool("quiz")}
-                  className="w-full bg-[#4A1414] hover:bg-[#6B1414] text-white"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   {t("tools.quiz.cta.button") || "Iniciar Diagnóstico"}
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -58,13 +55,14 @@ export default function InteractiveToolsSection() {
             </Card>
 
             {/* CTA para o Simulador */}
-            <Card className="shadow-lg border-none hover:shadow-xl transition-shadow flex flex-col">
+            {/* --- ALTERADO: Cores --- */}
+            <Card className="shadow-lg border-border hover:shadow-xl transition-shadow flex flex-col bg-card">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-[#4A1414]">
+                <CardTitle className="flex items-center gap-2 text-foreground">
                   <Calculator className="h-6 w-6" />
                   {t("tools.simulator.cta.title") || "Simulador de Economia"}
                 </CardTitle>
-                <CardDescription className="text-[#6B6B6B]">
+                <CardDescription className="text-muted-foreground">
                   {t("tools.simulator.cta.desc") ||
                     "Veja uma estimativa *ilustrativa* do quanto sua empresa poderia economizar em impostos."}
                 </CardDescription>
@@ -72,7 +70,7 @@ export default function InteractiveToolsSection() {
               <CardContent className="flex-grow flex items-end">
                 <Button
                   onClick={() => setActiveTool("simulator")}
-                  className="w-full bg-[#4A1414] hover:bg-[#6B1414] text-white"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   {t("tools.simulator.cta.button") || "Simular Agora"}
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -84,23 +82,21 @@ export default function InteractiveToolsSection() {
     }
   };
 
-  // Botão Voltar (aparece quando uma ferramenta está ativa)
   const renderBackButton = () => (
+    // --- ALTERADO: Cores ---
     <Button
       variant="outline"
       onClick={() => setActiveTool("none")}
-      className="mb-6 border-[#4A1414] text-[#4A1414] hover:bg-[#4A1414]/10"
+      className="mb-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
     >
       &larr; {t("tools.backButton") || "Voltar para Ferramentas"}
     </Button>
   );
 
   return (
-    // Mantém o estilo da seção consistente (pode ajustar o fundo se preferir)
-    <section className="py-20 md:py-32 bg-gradient-to-br from-[#F5F5F0] to-[#E8E8E0]">
+    // --- ALTERADO: Fundo ---
+    <section className="py-20 md:py-32 bg-transparent">
       <div className="container mx-auto px-4 max-w-4xl">
-        {" "}
-        {/* Aumentei um pouco o max-w */}
         {activeTool !== "none" && renderBackButton()}
         {renderContent()}
       </div>

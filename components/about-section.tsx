@@ -71,7 +71,12 @@ const AboutSection = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-32 bg-white" id="sobre">
+    // --- ALTERADO: Fundo ---
+    <section
+      ref={sectionRef}
+      className="py-20 md:py-32 bg-background"
+      id="sobre"
+    >
       <div className="container mx-auto px-4">
         {/* Section header */}
         <div
@@ -79,27 +84,21 @@ const AboutSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-sans font-bold text-[#4A1414] mb-6 text-balance">
+          {/* --- ALTERADO: Cores de texto --- */}
+          <h2 className="text-4xl md:text-5xl font-sans font-bold text-foreground mb-6 text-balance">
             {t("about.title")}
           </h2>
-          <p className="text-lg text-[#6B6B6B] leading-relaxed text-balance">
+          <p className="text-lg text-muted-foreground leading-relaxed text-balance">
             {t("about.history")}
           </p>
         </div>
 
-        {/* --- MODIFICAÇÃO AQUI --- */}
-        {/* Mission, Vision, Values - Alterado para Flex com Scroll no Mobile */}
         <div className="mb-20">
-          {" "}
-          {/* Wrapper para esconder a scrollbar visualmente se necessário */}
           <div className="flex overflow-x-auto space-x-6 md:space-x-0 md:grid md:grid-cols-3 md:gap-8 pb-4 md:pb-0 scrollbar-hide">
-            {" "}
-            {/* Adicionado scrollbar-hide (requer plugin se não usar Tailwind nativo) ou estilização customizada */}
             {values.map((value, index) => (
               <Card
                 key={value.title}
-                // Adiciona largura e impede que o card encolha no flex container
-                className={`flex-shrink-0 w-full max-w-xs sm:max-w-sm md:max-w-none md:w-auto border-none shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 ${
+                className={`flex-shrink-0 w-full max-w-xs sm:max-w-sm md:max-w-none md:w-auto border-none shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 bg-card ${
                   isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
@@ -107,13 +106,14 @@ const AboutSection = () => {
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
                 <CardContent className="p-8 text-center">
-                  <div className="w-16 h-16 bg-[#4A1414] rounded-full flex items-center justify-center mx-auto mb-6">
-                    <value.icon className="h-8 w-8 text-white" />
+                  {/* --- ALTERADO: Cores do ícone --- */}
+                  <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
+                    <value.icon className="h-8 w-8 text-foreground" />
                   </div>
-                  <h3 className="text-2xl font-sans font-bold text-[#4A1414] mb-4">
+                  <h3 className="text-2xl font-sans font-bold text-foreground mb-4">
                     {value.title}
                   </h3>
-                  <p className="text-[#6B6B6B] leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {value.description}
                   </p>
                 </CardContent>
@@ -121,7 +121,6 @@ const AboutSection = () => {
             ))}
           </div>
         </div>
-        {/* --- FIM DA MODIFICAÇÃO --- */}
 
         {/* Differentiator */}
         <div
@@ -129,7 +128,8 @@ const AboutSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="bg-gradient-to-r from-[#4A1414] to-[#6B1414] text-white p-8 md:p-12 rounded-2xl shadow-2xl">
+          {/* --- ALTERADO: Cores --- */}
+          <div className="bg-secondary text-foreground p-8 md:p-12 rounded-2xl shadow-2xl">
             <p className="text-xl md:text-2xl font-sans font-semibold text-balance">
               "{t("about.differentiator")}"
             </p>
@@ -142,7 +142,8 @@ const AboutSection = () => {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <h3 className="text-3xl md:text-4xl font-sans font-bold text-[#4A1414] text-center mb-12">
+          {/* --- ALTERADO: Cor --- */}
+          <h3 className="text-3xl md:text-4xl font-sans font-bold text-foreground text-center mb-12">
             {t("about.team")}
           </h3>
           <div className="grid md:grid-cols-3 gap-8">

@@ -232,25 +232,23 @@ export default function InteractiveQuiz() {
   const ResultIcon = resultTexts[resultLevel].icon;
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-br from-[#F5F5F0] to-[#E8E8E0]">
-      {" "}
-      {/* Mesmo fundo da seção 'areas' */}
+    <section className="py-20 md:py-32 bg-transparent">
       <div className="container mx-auto px-4 max-w-3xl">
-        <Card className="shadow-xl border-none overflow-hidden">
+        <Card className="shadow-xl border-border overflow-hidden bg-card">
           {!showResult ? (
             <>
-              <CardHeader className="bg-[#4A1414] text-white p-6">
+              <CardHeader className="bg-secondary text-foreground p-6">
                 <CardTitle className="text-2xl font-sans text-center">
                   {t("quiz.title") || "Diagnóstico Rápido: Risco Fiscal"} (
                   {currentQuestionIndex + 1}/{questions.length})
                 </CardTitle>
                 <Progress
                   value={progress}
-                  className="w-full mt-2 h-2 bg-white/30 [&>div]:bg-white"
+                  className="w-full mt-2 h-2 bg-background/30 [&>div]:bg-primary"
                 />
               </CardHeader>
               <CardContent className="p-6 md:p-8 space-y-6">
-                <p className="text-lg font-semibold text-center text-[#4A1414]">
+                <p className="text-lg font-semibold text-center text-foreground">
                   {currentQuestion.text}
                 </p>
                 <RadioGroup
@@ -263,7 +261,7 @@ export default function InteractiveQuiz() {
                   {currentQuestion.options.map((option) => (
                     <div
                       key={option.value}
-                      className="flex items-center space-x-3 p-3 border rounded-md hover:bg-gray-50 transition-colors"
+                      className="flex items-center space-x-3 p-3 border-border rounded-md hover:bg-accent transition-colors"
                     >
                       <RadioGroupItem
                         value={option.value}
@@ -271,7 +269,7 @@ export default function InteractiveQuiz() {
                       />
                       <Label
                         htmlFor={`${currentQuestion.id}-${option.value}`}
-                        className="flex-1 cursor-pointer text-[#6B6B6B]"
+                        className="flex-1 cursor-pointer text-muted-foreground"
                       >
                         {option.label}
                       </Label>
@@ -279,7 +277,7 @@ export default function InteractiveQuiz() {
                   ))}
                 </RadioGroup>
               </CardContent>
-              <CardFooter className="flex justify-between p-6 bg-gray-50 border-t">
+              <CardFooter className="flex justify-between p-6 bg-secondary/50 border-t border-border">
                 <Button
                   variant="outline"
                   onClick={handlePrevious}
@@ -290,7 +288,7 @@ export default function InteractiveQuiz() {
                 <Button
                   onClick={handleNext}
                   disabled={!isAnswerSelected}
-                  className="bg-[#4A1414] hover:bg-[#6B1414] text-white"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   {currentQuestionIndex === questions.length - 1
                     ? t("quiz.finish") || "Ver Resultado"
@@ -300,7 +298,7 @@ export default function InteractiveQuiz() {
             </>
           ) : (
             <>
-              <CardHeader className="bg-[#4A1414] text-white p-6">
+              <CardHeader className="bg-secondary text-foreground p-6">
                 <CardTitle className="text-2xl font-sans text-center">
                   {t("quiz.result.title") || "Resultado do Diagnóstico"}
                 </CardTitle>
@@ -326,18 +324,18 @@ export default function InteractiveQuiz() {
                 >
                   {resultTexts[resultLevel].title}
                 </h3>
-                <p className="text-[#6B6B6B] leading-relaxed max-w-prose mx-auto">
+                <p className="text-muted-foreground leading-relaxed max-w-prose mx-auto">
                   {resultTexts[resultLevel].description}
                 </p>
                 <Button
                   onClick={scrollToContact}
                   size="lg"
-                  className="mt-6 bg-[#4A1414] hover:bg-[#6B1414] text-white"
+                  className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90"
                 >
                   {t("quiz.cta") || "Agende uma Análise Tributária Gratuita"}
                 </Button>
               </CardContent>
-              <CardFooter className="flex justify-center p-6 bg-gray-50 border-t">
+              <CardFooter className="flex justify-center p-6 bg-secondary/50 border-t border-border">
                 <Button variant="ghost" onClick={resetQuiz}>
                   {t("quiz.restart") || "Refazer Diagnóstico"}
                 </Button>

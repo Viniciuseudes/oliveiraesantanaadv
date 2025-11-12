@@ -34,29 +34,28 @@ const translations = {
     "about.team": "Nossa Equipe",
     "about.viewProfile": "Ver Perfil Completo",
     "about.chooseOffice": "Escolha um escritório para consulta:",
+    // --- TEXTO ATUALIZADO ---
     "about.history":
-      "O escritório Oliveira & Santana nasceu da união de profissionais com vasta experiência em Direito Tributário e Empresarial, comprometidos em oferecer soluções jurídicas estratégicas e personalizadas.",
+      "Há 10 anos atuando com seriedade e excelência. O Oliveira Santana Advocacia construiu sua trajetória com compromisso, ética e resultados. Com atuação em todo o Brasil, seguimos dedicados a oferecer soluções jurídicas eficazes e personalizadas para cada cliente.",
     "about.differentiator":
       "Atuamos lado a lado com empresas que buscam crescimento sustentável e segurança jurídica.",
 
-    // Practice Areas
+    // Practice Areas - REESTRUTURADO
     "areas.title": "Áreas de Atuação",
     "areas.subtitle":
       "Soluções jurídicas especializadas para impulsionar o crescimento do seu negócio",
     "areas.tax": "Direito Tributário",
-    "areas.tax.1": "Planejamento tributário estratégico",
-    "areas.tax.2": "Recuperação de créditos tributários",
-    "areas.tax.3": "Defesa em autos de infração",
-    "areas.tax.4": "Consultoria preventiva",
-    "areas.tax.benefit":
-      "Reduza custos e riscos com uma estrutura tributária eficiente",
+    "areas.tax.description":
+      "Atuação estratégica na gestão e revisão de tributos, buscando a economia fiscal e a regularidade jurídica das empresas em todo o país.",
     "areas.corporate": "Direito Empresarial",
-    "areas.corporate.1": "Constituição e estruturação de empresas",
-    "areas.corporate.2": "Contratos e governança corporativa",
-    "areas.corporate.3": "Fusões e aquisições (M&A)",
-    "areas.corporate.4": "Contencioso empresarial",
-    "areas.corporate.benefit":
-      "Proteja seu negócio com estruturas jurídicas sólidas e estratégicas",
+    "areas.corporate.description":
+      "Assessoria completa para empresas em todas as fases do negócio, com foco em segurança jurídica, planejamento e crescimento sustentável.",
+    "areas.labor": "Direito Trabalhista Empresarial",
+    "areas.labor.description":
+      "Defesa dos interesses das empresas em demandas trabalhistas, além de orientação preventiva para minimizar riscos e litígios.",
+    "areas.preventive": "Assessoria Jurídica Preventiva Empresarial",
+    "areas.preventive.description":
+      "Atuação contínua e personalizada, identificando riscos e propondo soluções antes que se tornem problemas jurídicos.",
 
     // Why Choose Us
     "why.title": "Por que escolher nosso escritório",
@@ -131,7 +130,7 @@ const translations = {
     "footer.terms": "Termos de Uso",
     "footer.rights": "Todos os direitos reservados",
 
-    // Quiz - NOVAS TRADUÇÕES
+    // Quiz
     "quiz.title": "Diagnóstico Rápido: Risco Fiscal",
     "quiz.q1.text": "Qual o regime tributário atual da sua empresa?",
     "quiz.q1.opt.a": "Simples Nacional",
@@ -178,7 +177,7 @@ const translations = {
     "quiz.cta": "Agende uma Análise Tributária Gratuita",
     "quiz.restart": "Refazer Diagnóstico",
 
-    // Simulator - NOVAS TRADUÇÕES
+    // Simulator
     "simulator.title": "Simulador (Ilustrativo) de Economia Tributária",
     "simulator.description":
       "Tenha uma ideia do potencial de economia para sua empresa.",
@@ -244,29 +243,28 @@ const translations = {
     "about.team": "Our Team",
     "about.viewProfile": "View Full Profile",
     "about.chooseOffice": "Choose an office for consultation:",
+    // --- UPDATED TEXT ---
     "about.history":
-      "Oliveira & Santana was born from the union of professionals with extensive experience in Tax and Corporate Law, committed to offering strategic and personalized legal solutions.",
+      "For 10 years, we have been operating with integrity and excellence. Oliveira Santana Advocacia has built its trajectory on commitment, ethics, and results. Operating throughout Brazil, we remain dedicated to offering effective and personalized legal solutions for each client.",
     "about.differentiator":
       "We work side by side with companies seeking sustainable growth and legal security.",
 
-    // Practice Areas
+    // Practice Areas - RESTRUCTURED
     "areas.title": "Practice Areas",
     "areas.subtitle":
       "Specialized legal solutions to boost your business growth",
     "areas.tax": "Tax Law",
-    "areas.tax.1": "Strategic tax planning",
-    "areas.tax.2": "Tax credit recovery",
-    "areas.tax.3": "Defense in tax assessments",
-    "areas.tax.4": "Preventive consulting",
-    "areas.tax.benefit":
-      "Reduce costs and risks with an efficient tax structure",
+    "areas.tax.description":
+      "Strategic management and review of taxes, seeking tax savings and legal compliance for companies nationwide.",
     "areas.corporate": "Corporate Law",
-    "areas.corporate.1": "Company formation and structuring",
-    "areas.corporate.2": "Contracts and corporate governance",
-    "areas.corporate.3": "Mergers and acquisitions (M&A)",
-    "areas.corporate.4": "Corporate litigation",
-    "areas.corporate.benefit":
-      "Protect your business with solid and strategic legal structures",
+    "areas.corporate.description":
+      "Complete advisory for companies in all business phases, focusing on legal security, planning, and sustainable growth.",
+    "areas.labor": "Corporate Labor Law",
+    "areas.labor.description":
+      "Defense of company interests in labor demands, as well as preventive guidance to minimize risks and litigation.",
+    "areas.preventive": "Preventive Corporate Legal Advisory",
+    "areas.preventive.description":
+      "Continuous and personalized support, identifying risks and proposing solutions before they become legal problems.",
 
     // Why Choose Us
     "why.title": "Why choose our firm",
@@ -340,7 +338,7 @@ const translations = {
     "footer.terms": "Terms of Use",
     "footer.rights": "All rights reserved",
 
-    // Quiz - NEW TRANSLATIONS
+    // Quiz
     "quiz.title": "Quick Diagnosis: Tax Risk",
     "quiz.q1.text": "What is your company's current tax regime?",
     "quiz.q1.opt.a": "Simples Nacional",
@@ -386,7 +384,7 @@ const translations = {
     "quiz.cta": "Schedule a Free Tax Analysis",
     "quiz.restart": "Retake Diagnosis",
 
-    // Simulator - NEW TRANSLATIONS
+    // Simulator
     "simulator.title": "Tax Savings Simulator (Illustrative)",
     "simulator.description":
       "Get an idea of the potential savings for your company.",

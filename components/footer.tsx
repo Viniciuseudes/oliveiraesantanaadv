@@ -1,45 +1,60 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { Linkedin, Instagram } from "lucide-react"
-import { useLanguage } from "@/contexts/language-context"
+import Image from "next/image";
+import Link from "next/link";
+import { Linkedin, Instagram } from "lucide-react";
+import { useLanguage } from "@/contexts/language-context";
 
 export default function Footer() {
-  const { t } = useLanguage()
+  const { t } = useLanguage();
 
   return (
-    <footer className="bg-[#1A1A1A] text-white py-12">
+    // --- ALTERADO: Cor de fundo (será um azul mais escuro) ---
+    <footer className="bg-card text-white py-12">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Logo and description */}
           <div className="md:col-span-2">
+            {/* --- ALTERADO: Logo e remoção do filtro invert --- */}
             <Image
-              src="/logo.png"
+              src="/logo-monogram-white.png"
               alt="Oliveira & Santana"
               width={200}
               height={200}
-              className="w-auto h-32 mb-4 brightness-0 invert"
+              className="w-auto h-24 mb-4"
             />
-            <p className="text-white/70 leading-relaxed max-w-md">{t("footer.description")}</p>
+            <p className="text-white/70 leading-relaxed max-w-md">
+              {t("footer.description")}
+            </p>
           </div>
 
           {/* Quick links */}
           <div>
-            <h4 className="font-sans font-bold text-lg mb-4">{t("footer.links")}</h4>
+            <h4 className="font-sans font-bold text-lg mb-4">
+              {t("footer.links")}
+            </h4>
             <ul className="space-y-2">
               <li>
-                <Link href="#quem-somos" className="text-white/70 hover:text-white transition-colors">
+                <Link
+                  href="#quem-somos"
+                  className="text-white/70 hover:text-white transition-colors"
+                >
                   {t("footer.about")}
                 </Link>
               </li>
               <li>
-                <Link href="#areas-atuacao" className="text-white/70 hover:text-white transition-colors">
+                <Link
+                  href="#areas-atuacao"
+                  className="text-white/70 hover:text-white transition-colors"
+                >
                   {t("footer.areas")}
                 </Link>
               </li>
               <li>
-                <Link href="#contato" className="text-white/70 hover:text-white transition-colors">
+                <Link
+                  href="#contato"
+                  className="text-white/70 hover:text-white transition-colors"
+                >
                   {t("footer.contact")}
                 </Link>
               </li>
@@ -48,7 +63,9 @@ export default function Footer() {
 
           {/* Social media */}
           <div>
-            <h4 className="font-sans font-bold text-lg mb-4">{t("footer.social")}</h4>
+            <h4 className="font-sans font-bold text-lg mb-4">
+              {t("footer.social")}
+            </h4>
             <div className="flex gap-4">
               <a
                 href="https://linkedin.com"
@@ -73,18 +90,25 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/50 text-sm">
-            © {new Date().getFullYear()} Oliveira & Santana Advogados Associados. {t("footer.rights")}.
+            © {new Date().getFullYear()} Oliveira & Santana Advogados
+            Associados. {t("footer.rights")}.
           </p>
           <div className="flex gap-6 text-sm">
-            <Link href="#" className="text-white/50 hover:text-white transition-colors">
+            <Link
+              href="#"
+              className="text-white/50 hover:text-white transition-colors"
+            >
               {t("footer.privacy")}
             </Link>
-            <Link href="#" className="text-white/50 hover:text-white transition-colors">
+            <Link
+              href="#"
+              className="text-white/50 hover:text-white transition-colors"
+            >
               {t("footer.terms")}
             </Link>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
