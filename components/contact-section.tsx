@@ -103,7 +103,7 @@ export default function ContactSection() {
                   <h3 className="font-bold text-[#081c29] text-sm">
                     Central de Atendimento
                   </h3>
-                  <p className="text-gray-600 text-sm mt-1">(87) 99999-9999</p>
+                  <p className="text-gray-600 text-sm mt-1">(87) 99988-9988 </p>
                 </CardContent>
               </Card>
 

@@ -52,16 +52,14 @@ export default function StickyHeader() {
           >
             {/* --- ALTERADO: Logo --- */}
             <Image
-              src="/logo-monogram-white.png"
+              src="/marcaazul.png"
               alt="Oliveira & Santana"
               width={50}
               height={50}
               className="h-10 w-auto"
             />
             {/* --- ALTERADO: Cor do texto --- */}
-            <span className="font-sans font-bold text-foreground text-lg hidden md:block">
-              Oliveira & Santana
-            </span>
+            <span className="font-sans font-bold text-foreground text-lg hidden md:block"></span>
           </button>
 
           <nav className="hidden lg:flex items-center space-x-8">

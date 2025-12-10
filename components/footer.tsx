@@ -33,7 +33,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             {/* Logo branca para fundo escuro */}
             <Image
-              src="/logo-monogram-white.png"
+              src="/123.png"
               alt="Oliveira & Santana"
               width={200}
               height={200}
