@@ -1,48 +1,93 @@
-/* app/globals.css - Código Completo com Fundo CSS */
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
-/* :root -> NOVAS CORES (TEMA DARK BLUE) */
 :root {
-  /* Convertido #081c29 para oklch */
-  --background: oklch(17.37% 0.04 259.56);
-  --foreground: oklch(0.98 0.005 85); /* Texto branco */
+  /* --- CORES (Palette Definida) --- */
+  
+  /* Fundo Branco no topo (Hero) */
+  --background: oklch(1 0 0); 
+  /* Texto Azul Escuro para contraste */
+  --foreground: oklch(0.205 0 0); 
 
-  /* Cards e Popovers um tom mais claro que o fundo */
-  --card: oklch(20% 0.04 259.56);
-  --card-foreground: oklch(0.98 0.005 85);
-  --popover: oklch(20% 0.04 259.56);
-  --popover-foreground: oklch(0.98 0.005 85);
+  /* Azul da Identidade Visual (Base para o final do degradê) */
+  --brand-blue: #081c29; 
 
-  /* Primário (Branco) e Texto Primário (Azul) */
-  --primary: oklch(1 0 0); /* Branco */
-  --primary-foreground: oklch(17.37% 0.04 259.56); /* Azul */
+  /* Cores do Card (levemente off-white) */
+  --card: oklch(0.985 0 0);
+  --card-foreground: oklch(0.205 0 0);
+  
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.205 0 0);
 
-  /* Secundário (Azul mais claro/cinza) */
-  --secondary: oklch(0.35 0.01 30);
-  --secondary-foreground: oklch(0.98 0.005 85);
-  --muted: oklch(0.35 0.01 30);
-  --muted-foreground: oklch(0.65 0.01 30); /* Cinza claro p/ textos */
+  /* Primary (Azul Escuro) */
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
 
-  /* Accent (Hover) */
-  --accent: oklch(0.35 0.01 30);
-  --accent-foreground: oklch(0.98 0.005 85);
+  /* Secondary (Cinza muito claro) */
+  --secondary: oklch(0.96 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
 
-  --destructive: oklch(0.577 0.245 27.325); /* Vermelho */
-  --destructive-foreground: oklch(0.985 0 0); /* Branco */
+  --muted: oklch(0.96 0 0);
+  --muted-foreground: oklch(0.45 0 0);
 
-  --border: oklch(0.35 0.01 30); /* Borda sutil */
-  --input: oklch(0.35 0.01 30);
-  --ring: oklch(0.98 0.005 85); /* Anel de foco branco */
+  --accent: oklch(0.96 0 0);
+  --accent-foreground: oklch(0.205 0 0);
 
-  --chart-1: oklch(0.25 0.05 15);
-  --chart-2: oklch(0.65 0.01 30);
-  --chart-3: oklch(0.75 0.01 30);
-  --chart-4: oklch(0.55 0.01 30);
-  --chart-5: oklch(0.45 0.01 30);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.205 0 0);
+  
+  /* Gráficos */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  
   --radius: 0.5rem;
+  
+  /* Sidebar */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.87 0 0);
+}
+
+.dark {
+  /* Modo Escuro (caso o sistema ative, mas forçamos claro no design principal) */
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -53,87 +98,8 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-/* .high-contrast -> Mantido como estava, para acessibilidade */
-.high-contrast {
-  /* Fundo escuro e texto claro (ex: Amarelo sobre Preto) */
-  --background: oklch(0 0 0); /* Preto */
-  --foreground: oklch(0.95 0.15 90); /* Amarelo claro */
-
-  /* Cores para outros elementos UI garantindo contraste */
-  --card: oklch(0.1 0 0);
-  --card-foreground: oklch(0.95 0.15 90);
-  --popover: oklch(0.1 0 0);
-  --popover-foreground: oklch(0.95 0.15 90);
-  --primary: oklch(0.95 0.15 90); /* Amarelo para botões primários */
-  --primary-foreground: oklch(0 0 0); /* Texto preto para botões primários */
-  --secondary: oklch(0.3 0 0); /* Cinza escuro */
-  --secondary-foreground: oklch(0.95 0.15 90);
-  --muted: oklch(0.2 0 0);
-  --muted-foreground: oklch(0.85 0.05 90); /* Amarelo mais suave */
-  --accent: oklch(0.3 0 0);
-  --accent-foreground: oklch(0.95 0.15 90);
-  --destructive: oklch(0.8 0.15 25); /* Vermelho CLARO para usar como texto ou indicador sobre fundo escuro */
-  --destructive-foreground: oklch(0 0 0); /* Mantido escuro caso destructive seja usado como fundo */
-  --border: oklch(0.95 0.15 90); /* Bordas amarelas */
-  --input: oklch(0.1 0 0);
-  --input-foreground: oklch(0.95 0.15 90); /* Texto dentro do input */
-  --ring: oklch(0.8 0.15 90); /* Anel de foco amarelo */
-
-  /* Cores específicas do Sidebar em alto contraste */
-  --sidebar: oklch(0 0 0);
-  --sidebar-foreground: oklch(0.95 0.15 90);
-  --sidebar-border: oklch(0.95 0.15 90);
-  --sidebar-accent: oklch(0.2 0 0);
-  --sidebar-accent-foreground: oklch(0.95 0.15 90);
-  --sidebar-primary: oklch(0.95 0.15 90); /* Amarelo */
-  --sidebar-primary-foreground: oklch(0 0 0); /* Preto */
-}
-
-/* Garante que links sejam claramente visíveis no modo de alto contraste */
-.high-contrast a,
-.high-contrast button {
-  text-decoration: underline !important;
-  text-decoration-color: var(--foreground) !important; /* Usa a cor de texto principal do modo */
-  color: var(--foreground) !important;
-}
-.high-contrast button[aria-pressed="true"] { /* Estilo específico para botão de contraste ativo */
-    background-color: var(--primary) !important;
-    color: var(--primary-foreground) !important;
-}
-
-/* Garante que imagens/ícones que dependem de cor sejam visíveis no modo de alto contraste */
-.high-contrast img,
-.high-contrast svg {
-  /* Força cores mais básicas ou aplica filtros */
-   filter: grayscale(1) contrast(300%) brightness(1.5); /* Exemplo: alto contraste P&B */
-   /* background-color: white; /* Para SVGs que são máscaras */
-}
-/* Exceção para o logo no footer que já é branco */
-.high-contrast footer img {
-    filter: none;
-}
-/* Exceção para SVGs que não devem ser alterados (ex: ícones de bandeira no dropdown) */
-.high-contrast [data-slot="dropdown-menu-item"] svg { /* Exemplo genérico, ajustar seletor se necessário */
-    filter: none;
-}
-/* Exceção para ícones dentro do botão de contraste ativo */
-.high-contrast button[aria-pressed="true"] svg {
-    filter: none !important; /* Garante que o ícone mantenha a cor definida */
-    color: var(--primary-foreground) !important; /* Aplica a cor do texto do botão */
-}
-
-
-.high-contrast body {
-  background-color: var(--background) !important;
-  color: var(--foreground) !important;
-}
-
-
-/* Definições @theme inline (mantidas do original) */
+/* --- CONFIGURAÇÃO DO TEMA (ESSENCIAL PARA O ERROR SUMIR) --- */
 @theme inline {
-  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
-  --font-sans: "Inter", "system-ui", sans-serif;
-  --font-mono: "Inter", "system-ui", sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -172,161 +138,48 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* Definições @layer base (mantidas do original) */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-mono;
-
-    /* --- ESTA É A NOVA SEÇÃO DE FUNDO --- */
-    background-color: var(--background);
-    background-image: 
-      /* 1. Filtro de Ruído (Noise) */
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E"),
-      
-      /* 2. Vinheta Sutil (Vignette) */
-      radial-gradient(ellipse at center, rgba(255,255,255,0.03) 0%, transparent 70%);
+    @apply bg-background text-foreground font-sans antialiased;
     
-    background-attachment: fixed; /* Isso faz o fundo ficar parado */
-    /* --- FIM DA NOVA SEÇÃO --- */
+    /* DEGRADÊ MÁGICO */
+    background: linear-gradient(
+      180deg, 
+      #ffffff 0%,       
+      #f0f4f8 45%,      
+      #081c29 100%      
+    );
+    background-attachment: fixed;
+    min-height: 100vh;
   }
   
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-mono;
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans tracking-tight text-balance;
   }
 }
 
-/* Custom animations (mantidas do original) */
+/* Animações e Utilitários */
 @keyframes float {
-  0%,
-  100% {
-    transform: translateY(0) translateX(0);
-  }
-  33% {
-    transform: translateY(-20px) translateX(10px);
-  }
-  66% {
-    transform: translateY(10px) translateX(-10px);
-  }
-}
-
-@keyframes subtle-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-20px) translateX(10px); }
+  66% { transform: translateY(10px) translateX(-10px); }
 }
 
 @keyframes logo-entrance {
-  0% {
-    transform: scale(0.8) rotate(-5deg);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.05) rotate(2deg);
-  }
-  100% {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes slide-in-left {
-  0% {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in-up {
-  0% {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  0% { transform: scale(0.8) rotate(-5deg); opacity: 0; }
+  50% { transform: scale(1.05) rotate(2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
 }
 
 .animate-float {
   animation: float 15s ease-in-out infinite;
 }
 
-.animate-subtle-float {
-  animation: subtle-float 3s ease-in-out infinite;
-}
-
 .animate-logo-entrance {
   animation: logo-entrance 1.2s ease-out forwards;
-}
-
-.animate-slide-in-left {
-  animation: slide-in-left 0.8s ease-out 0.5s forwards;
-  opacity: 0;
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
-}
-
-/* Scroll-triggered animation utilities (mantidas do original) */
-.scroll-animate {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.scroll-animate.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.scroll-animate-left {
-  opacity: 0;
-  transform: translateX(-30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.scroll-animate-left.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.scroll-animate-right {
-  opacity: 0;
-  transform: translateX(30px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.scroll-animate-right.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.scroll-animate-scale {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.scroll-animate-scale.visible {
-  opacity: 1;
-  transform: scale(1);
 }
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -340,14 +193,15 @@
   background: #888;
   border-radius: 10px;
 }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-/* Para Firefox (pode precisar de ajustes) */
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #888 #f1f1f1;
 }
+@keyframes slow-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
 
-/* --- CLASSE .content-wrapper-with-watermark REMOVIDA --- */
-/* (Não é mais necessária pois o fundo está no BODY) */
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite alternate;
+}

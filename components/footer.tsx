@@ -2,13 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Instagram } from "lucide-react"; // LinkedIn foi removido daqui
+import { Instagram } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
 export default function Footer() {
-  const { language, t } = useLanguage(); // Adicionado 'language' para os links dinâmicos
+  const { language, t } = useLanguage();
 
-  // Lista completa de links rápidos
   const navItems = [
     { id: "sobre", label: t("footer.about") },
     { id: "areas-atuacao", label: t("footer.areas") },
@@ -22,13 +21,17 @@ export default function Footer() {
   ];
 
   return (
-    // --- ALTERADO: Cor de fundo (será um azul mais escuro) ---
-    <footer className="bg-card text-white py-12">
+    /* CORREÇÃO AQUI: 
+       Removido 'bg-card' (que é branco).
+       Adicionado 'bg-[#081c29]' para garantir que o fundo seja o Azul da marca,
+       independentemente do degradê do corpo da página.
+    */
+    <footer className="bg-[#081c29] text-white py-12 border-t border-white/10">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           {/* Logo and description */}
           <div className="md:col-span-2">
-            {/* --- ALTERADO: Logo e remoção do filtro invert --- */}
+            {/* Logo branca para fundo escuro */}
             <Image
               src="/logo-monogram-white.png"
               alt="Oliveira & Santana"
@@ -41,17 +44,16 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Quick links - ATUALIZADO */}
+          {/* Quick links */}
           <div>
             <h4 className="font-sans font-bold text-lg mb-4">
               {t("footer.links")}
             </h4>
             <ul className="space-y-2">
-              {/* Loop para todos os links rápidos */}
               {navItems.map((item) => (
                 <li key={item.id}>
                   <Link
-                    href={`#${item.id}`} // Link de âncora
+                    href={`#${item.id}`}
                     className="text-white/70 hover:text-white transition-colors"
                   >
                     {item.label}
@@ -61,15 +63,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social media - ATUALIZADO */}
+          {/* Social media */}
           <div>
             <h4 className="font-sans font-bold text-lg mb-4">
               {t("footer.social")}
             </h4>
             <div className="flex gap-4">
-              {/* --- LINKEDIN REMOVIDO --- */}
               <a
-                href="https://www.instagram.com/oliveiraesantana.adv/" // <-- LINK ATUALIZADO
+                href="https://www.instagram.com/oliveiraesantana.adv/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"

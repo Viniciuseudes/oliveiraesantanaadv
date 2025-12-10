@@ -2,12 +2,14 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { cn } from "@/lib/utils"; // Importante para permitir sobrescrever classes (cor, tamanho)
 
 interface AnimatedCounterProps {
   targetValue: number;
   duration?: number; // Duração da animação em milissegundos
-  label: string;
+  label?: string; // Tornamos opcional para usar na Hero Section nova
   icon?: React.ElementType; // Ícone opcional
+  className?: string; // Adicionado para aceitar classes CSS extras
 }
 
 export default function AnimatedCounter({
@@ -15,6 +17,7 @@ export default function AnimatedCounter({
   duration = 2000,
   label,
   icon: Icon,
+  className,
 }: AnimatedCounterProps) {
   const [currentValue, setCurrentValue] = useState(0);
   const counterRef = useRef<HTMLDivElement>(null);
@@ -64,20 +67,33 @@ export default function AnimatedCounter({
     };
 
     requestAnimationFrame(step);
-  }, [targetValue, duration, isVisible]); // Re-executa se o valor alvo mudar ou se ficar visível
+  }, [targetValue, duration, isVisible]);
 
   return (
-    <div ref={counterRef} className="text-center">
+    <div
+      ref={counterRef}
+      className="text-center flex flex-col items-center justify-center"
+    >
       {Icon && (
-        // --- ALTERADO: Cor do ícone ---
         <Icon className="h-8 w-8 md:h-10 md:w-10 mx-auto mb-2 text-muted-foreground" />
       )}
-      {/* --- ALTERADO: Cor do número --- */}
-      <div className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-foreground">
+      {/* O uso de cn() permite que as classes passadas via props (ex: text-white)
+         sobrescrevam as classes padrão (ex: text-foreground)
+      */}
+      <div
+        className={cn(
+          "text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-foreground",
+          className
+        )}
+      >
         {currentValue.toLocaleString("pt-BR")}+
       </div>
-      {/* --- ALTERADO: Cor do label --- */}
-      <p className="text-sm md:text-base text-muted-foreground mt-1">{label}</p>
+
+      {label && (
+        <p className="text-sm md:text-base text-muted-foreground mt-1">
+          {label}
+        </p>
+      )}
     </div>
   );
 }
