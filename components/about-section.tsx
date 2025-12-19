@@ -57,7 +57,7 @@ const AboutSection = () => {
     {
       name: "Joan Felix Oliveira da Silva",
       specialty: "Direito Tributário",
-      oab: "OAB/PE 38.146",
+      oab: "OAB/PE 38.588",
       image: "/joan.png",
       bio: "Advogado com mais de 10 anos de atuação em todo o Brasil, com ampla experiência em Transação Tributária.",
     },

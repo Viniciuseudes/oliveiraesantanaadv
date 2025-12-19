@@ -127,8 +127,6 @@ const translations = {
     "footer.areas": "Áreas de Atuação",
     "footer.contact": "Contato",
     "footer.social": "Redes Sociais",
-    "footer.privacy": "Política de Privacidade",
-    "footer.terms": "Termos de Uso",
     "footer.rights": "Todos os direitos reservados",
     "footer.instagram": "Instagram",
 
