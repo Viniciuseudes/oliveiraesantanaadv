@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"; // Adicionado Tabs
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Mail, Phone, Send, MapPin, Clock } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 import { useLanguage } from "@/contexts/language-context";
@@ -13,6 +13,21 @@ export default function ContactSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const { t } = useLanguage();
+
+  // --- OTIMIZAÇÃO DE MAPAS (Lazy Loading) ---
+  // Estado para rastrear quais mapas já foram carregados pelo usuário
+  const [loadedMaps, setLoadedMaps] = useState<Set<string>>(
+    new Set(["garanhuns"])
+  );
+
+  // Função chamada ao clicar na aba: libera o carregamento do mapa específico
+  const handleTabChange = (value: string) => {
+    setLoadedMaps((prev) => {
+      const newSet = new Set(prev);
+      newSet.add(value);
+      return newSet;
+    });
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -30,28 +45,29 @@ export default function ContactSection() {
     alert(t("contact.success"));
   };
 
-  // Dados dos escritórios para os Mapas
+  // Dados dos escritórios com URLs de Embed REAIS geradas para os endereços
   const offices = [
     {
       id: "garanhuns",
       label: "Garanhuns - PE",
       address: "R. Dr. José Mariano, 665 - Heliópolis",
+      // URL gerada para o endereço específico
       mapSrc:
-        "https://maps.google.com/maps?q=Rua+Dr+Jose+Mariano+665+Garanhuns+PE&t=&z=15&ie=UTF8&iwloc=&output=embed",
+        "https://maps.google.com/maps?q=R.+Dr.+Jos%C3%A9+Mariano,+665+-+Heli%C3%B3polis,+Garanhuns+-+PE&t=&z=15&ie=UTF8&iwloc=&output=embed",
     },
     {
       id: "recife",
       label: "Recife - PE",
       address: "Av. Domingos Ferreira, 704 - Pina",
       mapSrc:
-        "https://maps.google.com/maps?q=Av+Domingos+Ferreira+704+Recife+PE&t=&z=15&ie=UTF8&iwloc=&output=embed",
+        "https://maps.google.com/maps?q=Av.+Domingos+Ferreira,+704+-+Pina,+Recife+-+PE&t=&z=15&ie=UTF8&iwloc=&output=embed",
     },
     {
       id: "poa",
       label: "Porto Alegre - RS",
       address: "Av. Padre Cacique, 122 - Praia de Belas",
       mapSrc:
-        "https://maps.google.com/maps?q=Av+Padre+Cacique+122+Porto+Alegre+RS&t=&z=15&ie=UTF8&iwloc=&output=embed",
+        "https://maps.google.com/maps?q=Av.+Padre+Cacique,+122+-+Praia+de+Belas,+Porto+Alegre+-+RS&t=&z=15&ie=UTF8&iwloc=&output=embed",
     },
   ];
 
@@ -60,7 +76,6 @@ export default function ContactSection() {
       ref={sectionRef}
       id="contato"
       className="relative py-20 md:py-32 overflow-hidden"
-      // Degradê Hero-Style: Branco -> Azul Suave -> Azul Footer
       style={{
         background:
           "linear-gradient(180deg, #ffffff 0%, #f0f4f8 50%, #081c29 100%)",
@@ -93,7 +108,7 @@ export default function ContactSection() {
                 : "opacity-0 -translate-x-10"
             }`}
           >
-            {/* Cards Rápidos (Telefone e Email) */}
+            {/* Cards Rápidos */}
             <div className="grid sm:grid-cols-2 gap-4">
               <Card className="border-none shadow-md bg-white/80 backdrop-blur-md">
                 <CardContent className="p-5 flex flex-col items-center text-center">
@@ -122,7 +137,7 @@ export default function ContactSection() {
               </Card>
             </div>
 
-            {/* ABAS DE LOCALIZAÇÃO (Mapas Sucintos) */}
+            {/* MAPAS COM LAZY LOADING */}
             <Card className="border-none shadow-xl bg-white/90 backdrop-blur-md overflow-hidden">
               <div className="p-6 pb-0">
                 <h3 className="text-xl font-sans font-bold text-[#081c29] mb-4 flex items-center gap-2">
@@ -130,7 +145,12 @@ export default function ContactSection() {
                 </h3>
               </div>
 
-              <Tabs defaultValue="garanhuns" className="w-full">
+              {/* Adicionado onValueChange para detectar clique na aba */}
+              <Tabs
+                defaultValue="garanhuns"
+                className="w-full"
+                onValueChange={handleTabChange}
+              >
                 <div className="px-6">
                   <TabsList className="w-full grid grid-cols-3 bg-[#f0f4f8] rounded-lg p-1">
                     {offices.map((office) => (
@@ -159,24 +179,33 @@ export default function ContactSection() {
                         <span>{office.address}</span>
                       </div>
 
-                      {/* O MAPA (Iframe) */}
-                      <div className="w-full h-48 bg-gray-200 rounded-xl overflow-hidden border border-gray-200 shadow-inner relative">
-                        {/* Overlay de carregamento simples */}
-                        <div className="absolute inset-0 flex items-center justify-center bg-gray-100 -z-10">
-                          <span className="text-xs text-gray-400">
-                            Carregando mapa...
-                          </span>
-                        </div>
-                        <iframe
-                          width="100%"
-                          height="100%"
-                          src={office.mapSrc}
-                          style={{ border: 0 }}
-                          allowFullScreen
-                          loading="lazy"
-                          referrerPolicy="no-referrer-when-downgrade"
-                          title={`Mapa ${office.label}`}
-                        ></iframe>
+                      {/* O MAPA (Iframe Otimizado) */}
+                      <div className="w-full h-48 bg-gray-200 rounded-xl overflow-hidden border border-gray-200 shadow-inner relative group">
+                        {/* Só renderiza o Iframe se a aba foi ativada */}
+                        {loadedMaps.has(office.id) ? (
+                          <iframe
+                            width="100%"
+                            height="100%"
+                            src={office.mapSrc}
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy" // Native lazy loading
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title={`Mapa ${office.label}`}
+                            className="transition-opacity duration-700 opacity-0 animate-in fade-in fill-mode-forwards"
+                            onLoad={(e) =>
+                              e.currentTarget.classList.remove("opacity-0")
+                            }
+                          ></iframe>
+                        ) : (
+                          // Placeholder enquanto não clica/carrega
+                          <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 text-gray-400">
+                            <MapPin className="h-8 w-8 mb-2 opacity-20" />
+                            <span className="text-xs">
+                              Carregando visualização...
+                            </span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </TabsContent>
@@ -184,14 +213,13 @@ export default function ContactSection() {
               </Tabs>
             </Card>
 
-            {/* Horário (Extra sutil) */}
             <div className="flex items-center justify-center gap-2 text-sm text-[#081c29]/70 bg-white/50 py-2 rounded-full">
               <Clock className="h-4 w-4" />
               <span>Segunda a Sexta, das 8h às 18h</span>
             </div>
           </div>
 
-          {/* Coluna da Direita: Formulário */}
+          {/* Coluna da Direita: Formulário (Sem Alterações) */}
           <div
             className={`transition-all duration-1000 delay-500 ${
               isVisible
@@ -200,7 +228,6 @@ export default function ContactSection() {
             }`}
           >
             <Card className="border-none shadow-2xl bg-white rounded-2xl overflow-hidden">
-              {/* Faixa decorativa */}
               <div className="h-2 bg-[#081c29] w-full"></div>
 
               <CardContent className="p-8 md:p-10">
