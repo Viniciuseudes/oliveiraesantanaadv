@@ -50,7 +50,7 @@ const AboutSection = () => {
     {
       name: "Raphael Oliveira",
       specialty: "Direito Empresarial",
-      oab: "OAB/RS 38.588",
+      oab: "OAB/PE 38.588",
       image: "/team-photo1.jpg",
       bio: "Advogado, pós-graduado em Direito Empresarial, e Conselheiro da OAB Subseccional Garanhuns/PE, nos triênios 2022/2024 e 2025/2027.",
     },
@@ -64,7 +64,7 @@ const AboutSection = () => {
     {
       name: "Mayara Naytania",
       specialty: "Direito Trabalhista Empresarial",
-      oab: "OAB/PE nº 57.739",
+      oab: "OAB/PE 57.739",
       image: "/joan (1).png",
       bio: "Advogada especializada em Direito Trabalhista Preventivo Empresarial. Atua na construção de relações de trabalho éticas, seguras e sustentáveis, com foco em conformidade e prevenção jurídica.",
     },
