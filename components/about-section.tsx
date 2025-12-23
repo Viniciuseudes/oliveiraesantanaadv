@@ -50,14 +50,14 @@ const AboutSection = () => {
     {
       name: "Raphael Oliveira",
       specialty: "Direito Empresarial",
-      oab: "OAB/RS 45.678",
+      oab: "OAB/RS 38.588",
       image: "/team-photo1.jpg",
       bio: "Advogado, pós-graduado em Direito Empresarial, e Conselheiro da OAB Subseccional Garanhuns/PE, nos triênios 2022/2024 e 2025/2027.",
     },
     {
       name: "Joan Felix Oliveira da Silva",
       specialty: "Direito Tributário",
-      oab: "OAB/PE 38.588",
+      oab: "OAB/PE 38.146",
       image: "/joan.png",
       bio: "Advogado com mais de 10 anos de atuação em todo o Brasil, com ampla experiência em Transação Tributária.",
     },
